@@ -23,8 +23,8 @@ export default function ProductFeatures({
         ? t.products.features
         : 'Features';
 
-    const benefitsTitle = typeof t.products.benefits === 'string'
-        ? t.products.benefits
+    const benefitsTitle = typeof t.products.productBenefits === 'string'
+        ? t.products.productBenefits
         : 'Benefits';
 
     return (

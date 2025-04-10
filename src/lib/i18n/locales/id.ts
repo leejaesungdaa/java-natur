@@ -215,7 +215,7 @@ export default {
             title: 'Pertanyaan yang Sering Diajukan',
             description: 'Temukan jawaban untuk pertanyaan umum tentang produk kami'
         },
-        benefits: {
+        productBenefits: {
             title: 'Perbedaan Natur Java',
             description: 'Apa yang membedakan produk cuka kami dari yang lain'
         },

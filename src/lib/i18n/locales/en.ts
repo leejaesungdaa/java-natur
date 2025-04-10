@@ -215,7 +215,7 @@ export default {
             title: 'Frequently Asked Questions',
             description: 'Find answers to common questions about our products'
         },
-        benefits: {
+        productBenefits: {
             title: 'The Natur Java Difference',
             description: 'What sets our vinegar products apart from the rest'
         },

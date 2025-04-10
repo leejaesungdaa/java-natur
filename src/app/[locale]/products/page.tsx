@@ -123,7 +123,7 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
             <HeroSection
                 locale={locale}
                 title={t.products.all}
-                subtitle={t.products.benefits.description}
+                subtitle={t.products.productBenefits.description}
                 imageSrc="/images/products/products-hero.jpg"
                 height="medium"
             />
@@ -175,8 +175,8 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
                 <div className="container mx-auto px-4">
                     <SectionHeader
                         overline="OUR COMMITMENT"
-                        title={t.products.benefits.title}
-                        subtitle={t.products.benefits.description}
+                        title={t.products.productBenefits.title}
+                        subtitle={t.products.productBenefits.description}
                     />
 
                     <FeatureGrid

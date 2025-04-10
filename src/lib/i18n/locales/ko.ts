@@ -215,7 +215,7 @@ export default {
             title: '자주 묻는 질문',
             description: '제품에 대한 일반적인 질문에 대한 답변을 찾으세요'
         },
-        benefits: {
+        productBenefits: {
             title: 'Natur Java의 차별점',
             description: '다른 제품과 차별화되는 식초 제품의 특성'
         },
