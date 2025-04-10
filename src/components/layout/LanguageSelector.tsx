@@ -22,9 +22,9 @@ export default function LanguageSelector({
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const languageOptions = [
-        { key: 'id', label: 'INDONESIA', flag: '/images/flags/id.png' },
-        { key: 'en', label: 'ENGLISH', flag: '/images/flags/en.png' },
-        { key: 'ko', label: '한국어', flag: '/images/flags/ko.png' },
+        { key: 'id', label: 'INDONESIA', flag: '/images/flags/id.png?v=1' },
+        { key: 'en', label: 'ENGLISH', flag: '/images/flags/en.png?v=1' },
+        { key: 'ko', label: '한국어', flag: '/images/flags/ko.png?v=1' },
     ];
 
     const currentLanguage = languageOptions.find((lang) => lang.key === locale) || languageOptions[0];
