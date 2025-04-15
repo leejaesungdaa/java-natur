@@ -23,8 +23,11 @@ export default function LanguageSelector({
 
     const languageOptions = [
         { key: 'id', label: 'INDONESIA', flag: '/images/flags/id.png?v=1' },
-        { key: 'en', label: 'ENGLISH', flag: '/images/flags/en.png?v=1' },
         { key: 'ko', label: '한국어', flag: '/images/flags/ko.png?v=1' },
+        { key: 'en', label: 'ENGLISH', flag: '/images/flags/en.png?v=1' },
+        { key: 'ar', label: 'العربية', flag: '/images/flags/ar.png?v=1' },
+        { key: 'zh', label: '中文', flag: '/images/flags/zt.png?v=1' },
+        { key: 'ja', label: '日本語', flag: '/images/flags/ja.png?v=1' },
     ];
 
     const currentLanguage = languageOptions.find((lang) => lang.key === locale) || languageOptions[0];

@@ -22,63 +22,45 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
 
     const products = [
         {
-            id: 'apple-cider-vinegar',
-            name: 'Apple Cider Vinegar',
-            category: 'cider',
-            description: t.products.categories.cider,
+            id: 'sugarcane-pineapple',
+            name: '사탕수수 파인애플 식초',
+            category: 'pineapple',
+            description: '사탕수수 80%\n파인애플 20%',
             imageSrc: '/images/products/product-1.jpg',
             featured: true,
         },
         {
-            id: 'rice-vinegar',
-            name: 'Rice Vinegar',
-            category: 'rice',
-            description: t.products.categories.rice,
+            id: 'sugarcane-apple',
+            name: '사탕수수 사과 식초',
+            category: 'apple',
+            description: '사탕수수 80%\n사과 20%',
             imageSrc: '/images/products/product-2.jpg',
             featured: true,
         },
         {
-            id: 'coconut-vinegar',
-            name: 'Coconut Vinegar',
-            category: 'coconut',
-            description: t.products.categories.coconut,
+            id: 'sugarcane-dragonfruit',
+            name: '사탕수수 용과 식초',
+            category: 'dragonFruit',
+            description: '사탕수수 80%\n용과 20%',
             imageSrc: '/images/products/product-3.jpg',
             featured: true,
         },
         {
-            id: 'balsamic-vinegar',
-            name: 'Balsamic Vinegar',
-            category: 'balsamic',
-            description: t.products.categories.balsamic,
+            id: 'sugarcane-noni',
+            name: '사탕수수 노니 식초',
+            category: 'noni',
+            description: '사탕수수 80%\n노니 20%\n(출시 예정)',
             imageSrc: '/images/products/product-4.jpg',
             featured: false,
-        },
-        {
-            id: 'white-vinegar',
-            name: 'White Vinegar',
-            category: 'white',
-            description: t.products.categories.white,
-            imageSrc: '/images/products/product-5.jpg',
-            featured: false,
-        },
-        {
-            id: 'red-wine-vinegar',
-            name: 'Red Wine Vinegar',
-            category: 'wine',
-            description: t.products.categories.wine,
-            imageSrc: '/images/products/product-6.jpg',
-            featured: false,
-        },
+        }
     ];
 
     const categories = [
         { id: 'all', name: t.products.categories.all },
-        { id: 'cider', name: t.products.categories.cider },
-        { id: 'rice', name: t.products.categories.rice },
-        { id: 'coconut', name: t.products.categories.coconut },
-        { id: 'balsamic', name: t.products.categories.balsamic },
-        { id: 'wine', name: t.products.categories.wine },
-        { id: 'white', name: t.products.categories.white },
+        { id: 'pineapple', name: t.products.categories.pineapple },
+        { id: 'apple', name: t.products.categories.apple },
+        { id: 'dragonFruit', name: t.products.categories.dragonFruit },
+        { id: 'noni', name: t.products.categories.noni },
     ];
 
     const filteredProducts = activeCategory === 'all'
@@ -174,7 +156,7 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
             <section className="py-24 bg-white">
                 <div className="container mx-auto px-4">
                     <SectionHeader
-                        overline="OUR COMMITMENT"
+                        overline={t.common.sections.healthLifestyle}
                         title={t.products.productBenefits.title}
                         subtitle={t.products.productBenefits.description}
                     />
@@ -185,6 +167,22 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
                         centerTitle={true}
                         iconSize="large"
                     />
+
+                    <div className="mt-12 text-center">
+                        <Button
+                            href={`/${locale}/vinegar-story#videos`}
+                            className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white"
+                            size="lg"
+                            icon={
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            }
+                        >
+                            {t.common.buttons.watchVideoCheck}
+                        </Button>
+                    </div>
                 </div>
             </section>
 

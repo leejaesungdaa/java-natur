@@ -27,6 +27,7 @@ export default function Navigation({
     const navigationItems = [
         { key: 'home', path: '', label: t.common.menu.home },
         { key: 'company', path: '/company', label: t.common.menu.company },
+        { key: 'vinegarInfo', path: '/vinegar-info', label: t.common.menu.vinegarInfo },
         { key: 'vinegarStory', path: '/vinegar-story', label: t.common.menu.vinegarStory },
         { key: 'products', path: '/products', label: t.common.menu.products },
         { key: 'support', path: '/support', label: t.common.menu.support },

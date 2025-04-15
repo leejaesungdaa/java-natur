@@ -110,8 +110,8 @@ export default function ProductDetailPage({ params }: { params: PageParams }) {
     if (!product) {
         return (
             <div className="container mx-auto px-4 py-32 text-center">
-                <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
-                <p className="mb-8">The product you're looking for doesn't exist or has been removed.</p>
+                <h1 className="text-3xl font-bold mb-4">{t.products.notFound}</h1>
+                <p className="mb-8">{t.products.notFoundDesc}</p>
                 <Link href={`/${locale}/products`}>
                     <Button>{t.products.all}</Button>
                 </Link>
@@ -122,9 +122,9 @@ export default function ProductDetailPage({ params }: { params: PageParams }) {
     const relatedProductsData = product.relatedProducts.map(id => products[id]);
 
     const storeOptions = [
-        { name: "Official Store", url: "#" },
-        { name: "Marketplace 1", url: "#" },
-        { name: "Marketplace 2", url: "#" }
+        { name: t.products.storeOptions.official, url: "#" },
+        { name: t.products.storeOptions.marketplace1, url: "#" },
+        { name: t.products.storeOptions.marketplace2, url: "#" }
     ];
 
     return (
@@ -144,14 +144,14 @@ export default function ProductDetailPage({ params }: { params: PageParams }) {
                 <div className="container mx-auto px-4 py-16">
                     <div className="max-w-3xl mx-auto">
                         <SectionHeader
-                            title={`About ${product.name}`}
+                            title={t.products.aboutProduct.replace('{productName}', product.name)}
                             alignment="left"
                         />
                         <p className="text-lg text-gray-700 mb-8">{product.longDescription}</p>
 
                         <div className="bg-white p-6 rounded-xl shadow-sm mb-8">
                             <h3 className="text-xl font-bold text-gray-900 mb-4">{t.products.usage.title}</h3>
-                            <p className="text-gray-700">Take 1-2 tablespoons (15-30ml) daily, diluted in water. Can also be used in salad dressings, marinades, and cooking.</p>
+                            <p className="text-gray-700">{t.products.usage.description}</p>
                         </div>
                     </div>
                 </div>
@@ -188,7 +188,7 @@ export default function ProductDetailPage({ params }: { params: PageParams }) {
                 <div className="container mx-auto px-4 py-16">
                     <SectionHeader
                         title={t.products.relatedProducts}
-                        subtitle="Explore more premium vinegar products from the Natur Java collection."
+                        subtitle={t.products.relatedProductsDesc}
                     />
 
                     <ProductGrid
@@ -206,12 +206,13 @@ export default function ProductDetailPage({ params }: { params: PageParams }) {
 
             {/* CTA 섹션 */}
             <CallToAction
-                title="Want to Learn More About Vinegar Benefits?"
-                subtitle="Discover the countless health benefits and culinary uses of our premium vinegar products."
-                primaryButtonText="Explore Vinegar Story"
+                title={t.products.learnMore.title}
+                subtitle={t.products.learnMore.description}
+                primaryButtonText={t.vinegarStory.info.title}
                 primaryButtonHref={`/${locale}/vinegar-story`}
                 style="dark"
             />
         </div>
     );
+
 }

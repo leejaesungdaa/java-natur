@@ -9,13 +9,15 @@ import { useAnimation, getAnimationVariant } from '@/hooks/useAnimation';
 import HeroSection from '@/components/sections/HeroSection';
 import SectionHeader from '@/components/sections/SectionHeader';
 import CallToAction from '@/components/sections/CallToAction';
+import GoogleMap from '@/components/sections/GoogleMap';
+import SugarCaneBenefitsLink from '@/components/sections/SugarCaneBenefitsLink';
+import CompanyHistory from '@/components/sections/CompanyHistory';
 
 export default function CompanyPage({ params: { locale } }: { params: { locale: Locale } }) {
     const t = getTranslation(locale);
 
     const [aboutRef, aboutVisible] = useAnimation({ threshold: 0.2 });
     const [storyRef, storyVisible] = useAnimation({ threshold: 0.2 });
-    const [historyRef, historyVisible] = useAnimation({ threshold: 0.2 });
     const [contactRef, contactVisible] = useAnimation({ threshold: 0.2 });
 
     const fadeIn = getAnimationVariant('fadeIn');
@@ -25,34 +27,34 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
 
     const historyEvents = [
         {
-            year: "2010",
-            title: t.company.history.events.founding,
-            description: t.company.history.events.foundingDesc
-        },
-        {
-            year: "2012",
-            title: t.company.history.events.launch,
-            description: t.company.history.events.launchDesc
-        },
-        {
-            year: "2015",
-            title: t.company.history.events.expansion,
-            description: t.company.history.events.expansionDesc
+            year: "2016",
+            title: t.company.history.events.dev2016,
+            description: t.company.history.events.dev2016Desc
         },
         {
             year: "2018",
-            title: t.company.history.events.facility,
-            description: t.company.history.events.facilityDesc
+            title: t.company.history.events.sample2018,
+            description: t.company.history.events.sample2018Desc
         },
         {
-            year: "2020",
-            title: t.company.history.events.international,
-            description: t.company.history.events.internationalDesc
+            year: "2019",
+            title: t.company.history.events.production2019,
+            description: t.company.history.events.production2019Desc
         },
         {
-            year: "2023",
-            title: t.company.history.events.sustainable,
-            description: t.company.history.events.sustainableDesc
+            year: "2021",
+            title: t.company.history.events.certification2021,
+            description: t.company.history.events.certification2021Desc
+        },
+        {
+            year: "2022",
+            title: t.company.history.events.expansion2022,
+            description: t.company.history.events.expansion2022Desc
+        },
+        {
+            year: "2024",
+            title: t.company.history.events.oem2024,
+            description: t.company.history.events.oem2024Desc
         }
     ];
 
@@ -77,7 +79,6 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
 
     return (
         <div className="w-full pt-16">
-            {/* Hero Section */}
             <HeroSection
                 locale={locale}
                 title={t.company.about.title}
@@ -86,7 +87,6 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                 height="medium"
             />
 
-            {/* About Company Section */}
             <section id="about" className="py-24 bg-white" ref={aboutRef}>
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -116,6 +116,8 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                                     </div>
                                 ))}
                             </div>
+
+                            <SugarCaneBenefitsLink locale={locale} />
                         </motion.div>
 
                         <motion.div
@@ -138,7 +140,6 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                 </div>
             </section>
 
-            {/* Brand Story Section */}
             <section id="story" className="py-24 bg-gray-50" ref={storyRef}>
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -182,55 +183,14 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                 </div>
             </section>
 
-            {/* History Timeline Section */}
-            <section id="history" className="py-24 bg-white" ref={historyRef}>
-                <div className="container mx-auto px-4">
-                    <SectionHeader
-                        overline={t.company.history.subtitle}
-                        title={t.company.history.title}
-                        subtitle={t.company.history.subtitle}
-                    />
+            <CompanyHistory
+                locale={locale}
+                historyEvents={historyEvents}
+                title={t.company.history.title}
+                subtitle={t.company.history.subtitle}
+                bgColor="white"
+            />
 
-                    <div className="relative">
-                        {/* Vertical Line */}
-                        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-green-200 hidden md:block"></div>
-
-                        {/* Timeline Items */}
-                        {historyEvents.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={historyVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-                                className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? 'md:justify-end' : ''} mb-16 md:mb-24`}
-                            >
-                                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                                    <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                                        <div className={`flex items-center mb-4 ${index % 2 === 0 ? 'justify-end' : ''}`}>
-                                            <div className="bg-green-600 text-white text-lg font-bold px-4 py-1 rounded-md">
-                                                {item.year}
-                                            </div>
-                                        </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                                        <p className="text-gray-600">{item.description}</p>
-                                    </div>
-                                </div>
-
-                                {/* Timeline Dot - Only visible on md and up */}
-                                <div className="absolute left-1/2 transform -translate-x-1/2 md:flex items-center justify-center hidden">
-                                    <div className="w-6 h-6 rounded-full bg-green-500 border-4 border-white shadow"></div>
-                                </div>
-
-                                {/* Mobile timeline dot and line */}
-                                <div className="absolute left-0 top-0 h-full w-0.5 bg-green-200 ml-6 md:hidden"></div>
-                                <div className="absolute left-0 top-10 w-3 h-3 rounded-full bg-green-500 border-2 border-white shadow ml-4.5 md:hidden"></div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Contact Section */}
             <section id="contact" className="py-24 bg-gray-50" ref={contactRef}>
                 <div className="container mx-auto px-4">
                     <SectionHeader
@@ -295,13 +255,17 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                         >
                             <div className="bg-white rounded-xl shadow-md overflow-hidden">
                                 <div className="h-80 w-full relative">
-                                    <Image
-                                        src="/images/company-map.jpg"
-                                        alt={t.company.contact.title}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                    <iframe
+                                        src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&center=-6.5510,107.4840&zoom=15&maptype=roadmap`}
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0 }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        className="absolute inset-0"
+                                    ></iframe>
+                                    <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
                                         <div className="bg-white rounded-lg py-2 px-4 shadow-lg">
                                             <p className="font-medium text-gray-900">CV. SIYUN JAYA</p>
                                         </div>
@@ -322,7 +286,6 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                 </div>
             </section>
 
-            {/* Call to Action */}
             <CallToAction
                 title={t.home.cta.joinTitle}
                 subtitle={t.home.cta.joinDescription}

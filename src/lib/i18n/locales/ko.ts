@@ -4,6 +4,7 @@ export default {
         menu: {
             home: '홈',
             company: '회사 정보',
+            vinegarInfo: '식초 정보',
             vinegarStory: '식초 이야기',
             products: '제품 소개',
             support: '고객 지원',
@@ -15,7 +16,9 @@ export default {
             viewAll: '전체 보기',
             learnMore: '자세히 알아보기',
             contactUs: '연락하기',
-            watchVideo: '동영상 보기'
+            watchVideo: '동영상 보기',
+            goToVinegarInfo: '식초 정보로 이동',
+            watchVideoCheck: '동영상으로 확인하기'
         },
         scrollToTop: '맨 위로',
         loading: '로딩 중...',
@@ -33,28 +36,33 @@ export default {
             craftsmanship: '장인 정신',
             knowledge: '지식 센터',
             watchLearn: '보고 배우기',
-            featured: '추천 제품'
+            featured: '추천 제품',
+            commitment: '건강 & 라이프스타일',
+            whySugarcane: '왜 사탕수수로 식초를 만드는가?'
         }
     },
     home: {
         hero: {
             title: '자바 섬의 천연 식초',
-            subtitle: '천연 재료로 만든 프리미엄 품질의 식초',
+            subtitle: '100% 천연 과즙으로 구성된 프리미엄 품질의 식초',
+            highlightedText: '100% 천연 과즙'
         },
         about: {
-            title: 'NATUR JAVA 소개',
-            description: 'NATUR JAVA는 자바 섬의 천연 재료로 만든 프리미엄 품질의 식초 제품을 제공합니다.',
+            title: '왜 과즙 100%로 식초를 만드는가?',
+            description: '천연 과즙에 들어 있는 각종 미네랄과 유기질을 자연 그대로 식초에 담은 프리미엄 품질의 식초를 제공합니다.',
             subtitle: '품질과 전통에 대한 우리의 약속',
+            whyTitle: '왜 과즙 100%로 식초를 만드는가?'
         },
         products: {
             title: '제품 소개',
             viewAll: '모든 제품 보기',
-            subtitle: '프리미엄 제품 라인을 만나보세요',
+            subtitle: '자바 섬의 천연 재료로 만든 프리미엄 식초 제품을 경험해보세요',
+            description: '자바 섬의 천연 재료로 만든 프리미엄 식초 제품 컬렉션을 살펴보세요.',
             featuredProducts: '대표 제품'
         },
         benefits: {
             title: '천연 식초의 장점',
-            subtitle: '프리미엄 식초 제품이 건강을 향상시키는 방법을 알아보세요',
+            subtitle: '프리미엄 식초 제품이 건강을 향상시키고 요리 경험을 풍부하게 만드는 방법을 알아보세요',
             health: {
                 title: '건강상의 이점',
                 description: '소화를 돕고, 체중 관리를 지원하며, 혈당 수치 조절에 도움이 될 수 있습니다.'
@@ -70,7 +78,7 @@ export default {
         },
         testimonials: {
             title: '고객 후기',
-            subtitle: '사람들이 Natur Java를 선택하는 이유',
+            subtitle: '전 세계 사람들이 Natur Java를 선택하는 이유를 알아보세요',
             items: [
                 {
                     text: "Natur Java 식초의 품질은 뛰어납니다. 매일 요리에 사용하고 있으며 건강이 크게 개선되었습니다.",
@@ -96,17 +104,17 @@ export default {
         },
         cta: {
             title: 'Natur Java의 차이를 경험할 준비가 되셨나요?',
-            subtitle: '프리미엄 천연 식초 제품 라인을 살펴보세요',
+            subtitle: '프리미엄 천연 식초 제품 라인을 살펴보고 오늘 요리와 건강을 변화시켜 보세요.',
             joinTitle: 'NATUR JAVA 가족이 되어보세요',
             joinDescription: '최고급 천연 식초 제품을 경험하고 건강을 중시하는 소비자와 요리 애호가들의 커뮤니티에 참여하세요.'
         }
     },
     company: {
         about: {
-            title: 'CV. SIYUN JAYA 소개',
+            title: 'NATUR JAVA 소개',
             description: 'CV. SIYUN JAYA는 NATUR JAVA 브랜드로 고품질 식초 제품을 생산하는 회사입니다.',
             subtitle: '회사 가치와 사명',
-            fullDescription: 'CV. SIYUN JAYA는 인도네시아에 기반을 둔 프리미엄 품질의 식초 제품 선도적 생산업체입니다. 자연적이고 건강한 식품을 만들고자 하는 열정으로 설립되어, 현재는 지역에서 가장 신뢰받는 식초 브랜드 중 하나로 성장했습니다.',
+            fullDescription: 'NATUR JAVA는 인도네시아에 기반을 둔 프리미엄 품질의 식초 제품 선도적 생산 업체 입니다. 특히 과즙 100%로 식초를 생산하여 소비자들에게 풍부한 미네랄과 유기질을 공급하고 있습니다. 향후에도 자연적이고 건강한 식품을 공급하고 부산물 재처리를 위해 연구하고 있어 현재는 지역에서 가장 신뢰받는 식초 브랜드 중 하나로 성장했습니다.',
             values: {
                 quality: '품질 우수성',
                 qualityDesc: '최고 품질의 제품만을 생산하기 위한 우리의 약속',
@@ -116,10 +124,14 @@ export default {
                 innovationDesc: '제품과 프로세스를 지속적으로 개선',
                 tradition: '전통 존중',
                 traditionDesc: '현대 기술을 수용하면서도 전통적인 방법을 존중'
+            },
+            whySugarcane: {
+                title: '왜 사탕수수를 이용해서 식초를 만드는가?',
+                description: '사탕수수에는 칼륨, 마그네슘, 칼슘, 철분 같은 미네랄이 풍부하며 항산화 물질이 포함되어 있습니다.'
             }
         },
         story: {
-            title: 'NATUR JAVA 브랜드 스토리',
+            title: 'NATUR JAVA 스토리',
             description: 'NATUR JAVA 브랜드의 탄생 배경과 품질에 대한 우리의 약속.',
             subtitle: '최고의 식초를 만들기 위한 우리의 여정',
             paragraph1: 'NATUR JAVA 브랜드는 전통적인 인도네시아 식초 제조 기술을 현대 세계에 가져오고자 하는 열망에서 탄생했습니다. 우리의 창립자들은 자바 섬 전역을 여행하며, 여러 세대에 걸쳐 식초를 만들어온 현지 장인들로부터 배웠습니다.',
@@ -130,18 +142,18 @@ export default {
             title: '회사 연혁',
             subtitle: '성장과 발전의 이야기',
             events: {
-                founding: '회사 설립',
-                foundingDesc: 'CV. SIYUN JAYA는 프리미엄 천연 식품 제품을 만들겠다는 비전으로 설립되었습니다.',
-                launch: 'NATUR JAVA 브랜드 출시',
-                launchDesc: '주력 식초 브랜드인 NATUR JAVA가 두 가지 초기 제품으로 출시되었습니다.',
-                expansion: '제품 라인 확장',
-                expansionDesc: '다섯 가지 다양한 천연 식초를 포함하도록 제품 라인을 확장했습니다.',
-                facility: '새로운 생산 시설',
-                facilityDesc: '증가하는 수요를 충족하기 위해 최첨단 생산 시설을 열었습니다.',
-                international: '국제 확장',
-                internationalDesc: '동남아시아 인접 국가로 NATUR JAVA 제품 수출을 시작했습니다.',
-                sustainable: '지속 가능한 포장 이니셔티브',
-                sustainableDesc: '모든 제품 라인에 친환경 포장재를 도입했습니다.'
+                dev2016: '개발 시작',
+                dev2016Desc: 'NATUR JAVA의 초기 개념 개발 및 연구를 시작했습니다.',
+                sample2018: '샘플 제작',
+                sample2018Desc: '첫 번째 프로토타입 제품을 개발하고 테스트를 진행했습니다.',
+                production2019: '생산 시작',
+                production2019Desc: 'Kasomalang 지역에 생산 라인을 구축하고 본격적인 생산을 시작했습니다.',
+                certification2021: '공식 인증 획득',
+                certification2021Desc: 'BPOM(인도네시아 식약청) 공장 아우딧을 통과하고 식초 제품에 대한 식약청 허가 및 할랄 인증을 획득했습니다.',
+                expansion2022: '제품 라인 확장',
+                expansion2022Desc: '음료용 식초 제품을 새롭게 개발하여 시장에 출시했습니다.',
+                oem2024: '사업 확장',
+                oem2024Desc: 'OEM 생산을 시작하고, 11개의 자사 제품에 대한 할랄 인증을 획득했습니다.'
             }
         },
         contact: {
@@ -157,6 +169,105 @@ export default {
         team: {
             title: '우리 팀',
             subtitle: 'NATUR JAVA를 만드는 사람들'
+        }
+    },
+    vinegarInfo: {
+        title: '식초 정보',
+        subtitle: '사탕수수 식초의 장점',
+        description: '천연 사탕수수 식초에 대한 모든 정보를 확인하세요',
+        healthyLifestyle: '건강한 라이프스타일을 위한 천연 식초',
+        healthyLifestyleDesc: '사탕수수의 자연적 풍미와 건강 효능, Java Natur 식초와 함께 건강한 생활을 시작하세요',
+        classification: {
+            title: '인도네시아 식품법에 따른 식초 분류',
+            description: '인도네시아의 식품 관련 법률과 BPOM 규정에 따른 식초 분류',
+            synthetic: '합성 식초 (Synthetic Vinegar)',
+            syntheticDesc: '빙초산(아세트산)을 물에 희석해 만든 식초',
+            seasoned: '조미 식초 (Seasoned Vinegar)',
+            seasonedDesc: '천연 또는 합성 식초에 설탕, 소금, 향신료 등을 첨가한 제품',
+            natural: '천연 발효 식초 (Vinegar from Natural Fermentation)',
+            naturalDesc: '과일(사탕수수, 코코넛, 망고 등)이나 곡물(쌀 등)을 발효시켜 만든 식초',
+            fermentationTypes: '발효 방법에 따른 구분',
+            fermentationType1: '에탄올과 물, 과즙을 혼합하여 초산 발효한 식초',
+            fermentationType2: '과즙, 물, 설탕을 혼합하여 2회 발효한 식초',
+            fermentationType3: '과즙 100%의 원액을 2회 발효한 식초: 상대적으로 높은 미네랄과 유기질 보유'
+        },
+        sugarcaneBenefits: {
+            title: '식초 만들 때, 사탕수수를 쓰면 좋은 점',
+            summaryTitle: '요약',
+            nutrition: {
+                title: '영양 성분의 풍부함',
+                mineralTitle: '미네랄 함량',
+                mineralDesc: '사탕수수에는 칼륨, 마그네슘, 칼슘, 철분 같은 미네랄이 풍부해요',
+                mineralExample: '예: 사탕수수즙 100g당 칼륨 약 150mg, 마그네슘 20mg (USDA 데이터 기준). 발효 후에도 일부 미네랄이 잔류해요',
+                healthEffect: '건강 효과: 칼륨은 수분 균형 조절과 부종 완화(디톡스)에 도움. 마그네슘은 신진대사와 근육 이완에 기여',
+                naturalSugarTitle: '천연 당분 & 폴리페놀',
+                naturalSugar: '천연 당분: 사탕수수는 천연 당분(수크로스, 글루코스)이 풍부해 발효 과정에서 효모가 더 활발히 작용하며, 풍미 깊은 아세트산 생성에 기여',
+                polyphenols: '폴리페놀: 사탕수수에는 항산화 물질(폴리페놀)이 포함돼 있어 항산화 효과를 기대할 수 있어요',
+                summary: 'Java Natur는 사탕수수 기반으로 미네랄과 항산화 물질이 더 풍부해 건강에 더 유익해요'
+            },
+            flavor: {
+                title: '맛과 풍미',
+                desc: '사탕수수의 천연 단맛과 깊은 풍미가 발효 후에도 남아 있어요. 과즙 20%와 조합되면서 신맛 속에 달콤하고 풍부한 맛이 살아있죠',
+                usage: '요리(샐러드, 소스)나 음료(디톡스 드링크)로 활용 시 더 고급스럽고 독특한 맛을 제공해요',
+                summary: 'Java Natur는 사탕수수의 풍부한 풍미로 더 다양한 용도로 활용 가능하고, 고급스러운 맛을 제공해요'
+            },
+            health: {
+                title: '건강 효과의 차이',
+                detox: '미네랄로 인한 디톡스 효과: 칼륨과 마그네슘이 수분 균형을 조절해 부종 완화, 디톡스 효과를 높여줘요',
+                antioxidant: '항산화 효과: 사탕수수의 폴리페놀이 세포 손상을 방지하고 염증 감소에 기여',
+                bloodSugar: '혈당 조절: 아세트산과 폴리페놀이 혈당 스파이크를 억제하고 인슐린 민감성을 개선',
+                metabolism: '신진대사 지원: 미네랄(마그네슘, 칼슘)이 에너지 대사와 신진대사를 원활하게 해줘요',
+                summary: 'Java Natur는 사탕수수의 미네랄과 항산화 성분으로 디톡스, 항산화, 신진대사 지원 면에서 더 큰 건강 효과를 제공해요'
+            }
+        },
+        productDifferences: {
+            title: '제품별 특징과 효능 차이',
+            subtitle: '각 식초 제품의 고유한 성분과 건강 효능 비교',
+            pineapple: {
+                title: '사탕수수 + 파인애플 (Java Natur Pineapple)',
+                ingredients: '주요 성분: 아세트산, 브로멜라인, 비타민 C, 칼륨',
+                healthEffects: '건강 효과',
+                digestionTitle: '소화 촉진',
+                digestion: '소화 촉진: 브로멜라인이 단백질 소화를 돕고 소화 불량 완화',
+                inflammationTitle: '염증 감소',
+                inflammation: '염증 감소: 브로멜라인의 항염 효과로 근육통, 관절염 완화',
+                immunityTitle: '면역력 강화',
+                immunity: '면역력 강화: 파인애플의 비타민 C가 면역 체계 지원',
+                bloodSugarTitle: '혈당 조절',
+                bloodSugar: '혈당 조절: 아세트산으로 혈당 스파이크 억제',
+                detox: '디톡스: 칼륨으로 수분 균형 조절, 부종 완화',
+                feature: '특징: 소화와 염증 관리에 더 강점이 있으며, 상큼한 맛으로 음료 활용에 적합'
+            },
+            apple: {
+                title: '사탕수수 + 사과 (Java Natur Apel)',
+                ingredients: '주요 성분: 아세트산, 폴리페놀, 칼륨, 소량의 프로바이오틱스(발효 부산물)',
+                healthEffects: '건강 효과',
+                bloodSugarTitle: '혈당 조절',
+                bloodSugar: '혈당 조절: 아세트산과 폴리페놀이 인슐린 민감성을 개선해 혈당 관리에 도움',
+                weightTitle: '체중 관리',
+                weight: '체중 관리: 아세트산이 지방 대사를 촉진하고 식욕 억제 효과',
+                antioxidantTitle: '항산화 효과',
+                antioxidant: '항산화 효과: 사과의 폴리페놀이 항산화 작용으로 세포 손상 방지',
+                digestionTitle: '소화 개선',
+                digestion: '소화 개선: 발효 부산물(마더)로 장 건강 지원',
+                detox: '디톡스: 칼륨으로 수분 균형 조절',
+                feature: '특징: 혈당 조절과 체중 관리에 더 강점이 있음'
+            },
+            dragonFruit: {
+                title: '사탕수수 + 용과 (Java Natur Buah naga)',
+                ingredients: '주요 성분: 아세트산, 비타민 C, 베타인(항산화 물질), 섬유질(용과 성분), 칼륨',
+                healthEffects: '건강 효과',
+                antioxidantTitle: '항산화 효과',
+                antioxidant: '항산화 효과: 용과의 베타인과 비타민 C가 항산화 작용으로 세포 보호, 피부 건강 개선',
+                gutHealthTitle: '장 건강',
+                gutHealth: '장 건강: 용과의 섬유질이 장 운동을 촉진하고 변비 예방',
+                immunityTitle: '면역력 강화',
+                immunity: '면역력 강화: 비타민 C로 면역 체계 지원',
+                bloodSugarTitle: '혈당 조절',
+                bloodSugar: '혈당 조절: 아세트산으로 혈당 스파이크 억제',
+                detox: '디톡스: 칼륨으로 수분 균형 조절, 부종 완화',
+                feature: '특징: 항산화와 장 건강에 더 강점이 있으며, 용과의 달콤한 맛으로 음료나 디저트 활용에 적합'
+            }
         }
     },
     vinegarStory: {
@@ -202,11 +313,25 @@ export default {
             coconut: '코코넛 식초',
             balsamic: '발사믹 식초',
             wine: '와인 식초',
-            white: '화이트 식초'
+            white: '화이트 식초',
+            pineapple: '파인애플 식초',
+            apple: '사과 식초',
+            dragonFruit: '용과 식초',
+            noni: '노니 식초',
+            sugarcane: '사탕수수'
         },
         featured: '추천',
-        naturalIngredients: '100% 천연 재료',
+        naturalIngredients: '100% 천연 재료\n100% 과즙\n100% 천연 발효',
         relatedProducts: '함께 구매하기 좋은 제품',
+        relatedProductsDesc: 'Natur Java 컬렉션의 다른 프리미엄 식초 제품을 살펴보세요.',
+        notFound: '제품을 찾을 수 없습니다',
+        notFoundDesc: '찾으시는 제품이 존재하지 않거나 삭제되었습니다.',
+        storeOptions: {
+            official: '공식 스토어',
+            marketplace1: '마켓플레이스 1',
+            marketplace2: '마켓플레이스 2'
+        },
+        aboutProduct: '{productName}에 대하여',
         where: {
             title: '구매처',
             description: '원하는 쇼핑 플랫폼을 선택하세요'
@@ -221,7 +346,7 @@ export default {
         },
         usage: {
             title: '사용 방법',
-            description: '식초 제품을 최대한 활용하세요'
+            description: '매일 1-2 테이블스푼(15-30ml)을 물에 희석하여 섭취하세요. 샐러드 드레싱, 양념, 요리에도 사용할 수 있습니다.'
         },
         quality: {
             title: '100% 천연',
@@ -238,6 +363,10 @@ export default {
         health: {
             title: '건강상의 이점',
             description: '전반적인 건강을 지원하는 프로바이오틱스와 효소가 풍부합니다.'
+        },
+        learnMore: {
+            title: '식초의 건강상 이점에 대해 더 알고 싶으신가요?',
+            description: '프리미엄 식초 제품의 수많은 건강상 이점과 요리에서의 활용법을 발견해보세요.'
         }
     },
     support: {
@@ -309,8 +438,8 @@ export default {
         terms: '이용약관',
         description: '인도네시아 자바 섬의 아름다운 천연 재료로 만든 프리미엄 품질의 식초 제품.',
         contact: {
-            address: '인도네시아 자카르타 비네가 스트리트 123',
-            phone: '+62 123 456 7890',
+            address: 'RT 006/RW 003 Kp. Warung Mekar, Jl. Raya Bungursari, Bungursari, Purwakarta Regency, West Java 41181',
+            phone: '+62 81 1119 8329',
             email: 'info@naturjava.com'
         }
     },
@@ -403,4 +532,4 @@ export default {
             }
         }
     }
-};
+}
