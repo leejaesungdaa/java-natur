@@ -12,7 +12,9 @@
       "mcp__ide__getDiagnostics",
       "Bash(mv:*)",
       "Bash(cp:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(python:*)",
+      "Bash(del \"C:\\Users\\ASUS\\Desktop\\INDOWEB\\2025\\CV_SIYUN_JAYA\\natur-java-website\\postcss.config.mjs\")"
     ],
     "deny": [],
     "ask": []

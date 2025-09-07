@@ -8,6 +8,7 @@ import { db } from '@/lib/firebase/firebaseConfig';
 import { imageService } from '@/lib/firebase/services';
 import { getCurrentAdminInfo } from '@/lib/auth/authHelpers';
 import { formatJakartaTime } from '@/lib/utils/dateFormat';
+import { scrollToForm } from '@/lib/utils/scrollToForm';
 
 interface Product {
     id?: string;
@@ -35,6 +36,8 @@ interface Product {
     updatedBy?: string;
     updatedByName?: string;
     updatedAt?: string;
+    [key: `name_${string}`]: string | undefined;
+    [key: `description_${string}`]: string | undefined;
 }
 
 interface ProductsTabProps {
@@ -44,7 +47,7 @@ interface ProductsTabProps {
     refreshKey?: number;
 }
 
-export function ProductsTab({ currentLocale, showToast, t, refreshKey }: ProductsTabProps) {
+export function ProductsTab({ currentLocale, showToast, t, refreshKey = 0 }: ProductsTabProps) {
     const [products, setProducts] = useState<Product[]>([]);
     const [editingItem, setEditingItem] = useState<any>(null);
     const [loading, setLoading] = useState(true);
@@ -262,6 +265,7 @@ export function ProductsTab({ currentLocale, showToast, t, refreshKey }: Product
             [`name_${currentLocale}`]: item[`name_${currentLocale}`] || '',
             [`description_${currentLocale}`]: item[`description_${currentLocale}`] || ''
         });
+        scrollToForm();
     };
 
     return (
@@ -302,6 +306,7 @@ export function ProductsTab({ currentLocale, showToast, t, refreshKey }: Product
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-gray-50 p-6 rounded-lg space-y-4 mb-6"
+                    data-edit-form
                 >
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">

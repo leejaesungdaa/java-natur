@@ -34,6 +34,7 @@ const HeroSection = memo(({ locale, heroBg, heroData }: HeroSectionProps) => {
                 quality={90}
                 className="object-cover"
                 sizes="100vw"
+                style={{ objectFit: 'cover' }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
             <div className="container mx-auto px-4 z-10">

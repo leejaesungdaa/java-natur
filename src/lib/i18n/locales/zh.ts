@@ -1,6 +1,6 @@
 export default {
     common: {
-        siteName: 'NATUR JAVA',
+        siteName: 'Java Natur',
         menu: {
             home: '首页',
             company: '公司信息',
@@ -78,20 +78,20 @@ export default {
         },
         testimonials: {
             title: '客户评价',
-            subtitle: '为什么人们选择Natur Java',
+            subtitle: '为什么人们选择Java Natur',
             items: [
                 {
-                    text: "Natur Java醋的品质非常出色。我每天在烹饪中使用它，并且看到了显著的健康改善。",
+                    text: "Java Natur醋的品质非常出色。我每天在烹饪中使用它，并且看到了显著的健康改善。",
                     name: "Sarah J.",
                     position: "厨师，纽约"
                 },
                 {
-                    text: "作为一名厨师，我对原料非常挑剔。Natur Java彻底改变了我餐厅里的菜肴。",
+                    text: "作为一名厨师，我对原料非常挑剔。Java Natur彻底改变了我餐厅里的菜肴。",
                     name: "Michael T.",
                     position: "餐厅老板，芝加哥"
                 },
                 {
-                    text: "我尝试过许多醋品牌，但Natur Java以其真实的口味和纯净的成分脱颖而出。强烈推荐！",
+                    text: "我尝试过许多醋品牌，但Java Natur以其真实的口味和纯净的成分脱颖而出。强烈推荐！",
                     name: "Ayu W.",
                     position: "美食博主，雅加达"
                 }
@@ -103,18 +103,18 @@ export default {
             traditional: '传统工艺'
         },
         cta: {
-            title: '准备体验Natur Java的不同之处了吗？',
+            title: '准备体验Java Natur的不同之处了吗？',
             subtitle: '探索我们的高端天然醋产品系列',
-            joinTitle: '加入NATUR JAVA家族',
+            joinTitle: '加入Java Natur家族',
             joinDescription: '体验我们的高端天然醋产品，加入注重健康的消费者和美食爱好者社区。'
         }
     },
     company: {
         about: {
-            title: '关于NATUR JAVA',
-            description: 'CV. SIYUN JAYA是一家以NATUR JAVA品牌生产高品质醋产品的公司。',
+            title: '关于Java Natur',
+            description: 'CV. SIYUN JAYA是一家以Java Natur品牌生产高品质醋产品的公司。',
             subtitle: '公司价值观和使命',
-            fullDescription: 'NATUR JAVA是印度尼西亚领先的优质醋产品生产商。我们特别使用100%果汁生产醋，为消费者提供丰富的矿物质和有机物质。我们继续研究自然健康食品的供应和副产品的再加工，使我们成为该地区最受信任的醋品牌之一。',
+            fullDescription: 'Java Natur是印度尼西亚领先的优质醋产品生产商。我们特别使用100%果汁生产醋，为消费者提供丰富的矿物质和有机物质。我们继续研究自然健康食品的供应和副产品的再加工，使我们成为该地区最受信任的醋品牌之一。',
             values: {
                 quality: '品质卓越',
                 qualityDesc: '我们承诺只生产最高质量的产品',
@@ -131,11 +131,11 @@ export default {
             }
         },
         story: {
-            title: 'NATUR JAVA故事',
-            description: 'NATUR JAVA品牌诞生的背景故事和我们对品质的承诺。',
+            title: 'Java Natur故事',
+            description: 'Java Natur品牌诞生的背景故事和我们对品质的承诺。',
             subtitle: '我们创造最佳醋的旅程',
-            paragraph1: 'NATUR JAVA品牌诞生于将印度尼西亚传统醋制作技术带入现代世界的愿望。我们的创始人遍游爪哇岛，向几代人制作醋的当地工匠学习。',
-            paragraph2: '我们相信天然原料和可持续做法的力量。每瓶NATUR JAVA醋代表着我们对品质、健康和保存传统食品文化的承诺。',
+            paragraph1: 'Java Natur品牌诞生于将印度尼西亚传统醋制作技术带入现代世界的愿望。我们的创始人遍游爪哇岛，向几代人制作醋的当地工匠学习。',
+            paragraph2: '我们相信天然原料和可持续做法的力量。每瓶Java Natur醋代表着我们对品质、健康和保存传统食品文化的承诺。',
             paragraph3: '今天，我们继续尊重传统方法，同时不断创新，创造能提升全球客户健康和烹饪体验的醋产品。'
         },
         history: {
@@ -143,7 +143,7 @@ export default {
             subtitle: '成长与发展的故事',
             events: {
                 dev2016: '开始研发',
-                dev2016Desc: '开始NATUR JAVA的初步概念开发和研究。',
+                dev2016Desc: '开始Java Natur的初步概念开发和研究。',
                 sample2018: '样品制作',
                 sample2018Desc: '开发和测试第一批原型产品。',
                 production2019: '开始生产',
@@ -168,7 +168,7 @@ export default {
         },
         team: {
             title: '我们的团队',
-            subtitle: 'NATUR JAVA背后的人们'
+            subtitle: 'Java Natur背后的人们'
         }
     },
     vinegarInfo: {
@@ -323,7 +323,7 @@ export default {
         featured: '推荐',
         naturalIngredients: '100% 天然原料\n100% 果汁\n100% 天然发酵',
         relatedProducts: '您可能还喜欢的产品',
-        relatedProductsDesc: '探索Natur Java系列的更多高端醋产品。',
+        relatedProductsDesc: '探索Java Natur系列的更多高端醋产品。',
         notFound: '未找到产品',
         notFoundDesc: '您查找的产品不存在或已被删除。',
         storeOptions: {
@@ -341,7 +341,7 @@ export default {
             description: '查找关于我们产品的常见问题答案'
         },
         productBenefits: {
-            title: 'Natur Java的不同之处',
+            title: 'Java Natur的不同之处',
             description: '是什么让我们的醋产品与众不同'
         },
         usage: {
@@ -408,7 +408,7 @@ export default {
                 },
                 {
                     question: "如何储存醋？",
-                    answer: "Natur Java醋应存放在阴凉、避光处，远离阳光直射。开瓶后无需冷藏，但冷藏可以帮助更长时间保持风味。"
+                    answer: "Java Natur醋应存放在阴凉、避光处，远离阳光直射。开瓶后无需冷藏，但冷藏可以帮助更长时间保持风味。"
                 },
                 {
                     question: "什么是苹果醋中的'醋母'？",

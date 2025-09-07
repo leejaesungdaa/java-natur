@@ -38,7 +38,6 @@ import {
 } from 'firebase/auth';
 import { Locale } from '@/lib/i18n/config';
 
-// Error handling utility
 export class FirebaseError extends Error {
     constructor(
         message: string,
@@ -51,14 +50,12 @@ export class FirebaseError extends Error {
     }
 }
 
-// Logging utility for development (will be removed in production)
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const logError = (operation: string, error: any) => {
     if (isDevelopment) {
         console.error(`Firebase ${operation} error:`, error);
     }
-    // In production, you might want to send this to a logging service
 };
 
 const logInfo = (operation: string, message: string) => {
@@ -67,7 +64,6 @@ const logInfo = (operation: string, message: string) => {
     }
 };
 
-// Base service class with common functionality
 abstract class BaseFirebaseService {
     protected handleError(operation: string, error: any): never {
         const message = error.message || 'Unknown error occurred';
@@ -81,7 +77,6 @@ abstract class BaseFirebaseService {
     }
 }
 
-// Authentication Service
 export class AuthService extends BaseFirebaseService {
     async signIn(email: string, password: string): Promise<User> {
         try {

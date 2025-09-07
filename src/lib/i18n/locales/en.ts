@@ -1,6 +1,6 @@
 export default {
     common: {
-        siteName: 'NATUR JAVA',
+        siteName: 'Java Natur',
         menu: {
             home: 'Home',
             company: 'Company',
@@ -78,20 +78,20 @@ export default {
         },
         testimonials: {
             title: 'Testimonials',
-            subtitle: 'Discover why people around the world choose Natur Java',
+            subtitle: 'Discover why people around the world choose Java Natur',
             items: [
                 {
-                    text: "The quality of Natur Java vinegar is exceptional. I use it daily in my cooking and have noticed significant health improvements.",
+                    text: "The quality of Java Natur vinegar is exceptional. I use it daily in my cooking and have noticed significant health improvements.",
                     name: "Sarah J.",
                     position: "Chef, New York"
                 },
                 {
-                    text: "As a chef, I'm very particular about my ingredients. Natur Java has been a game-changer for my restaurant's recipes.",
+                    text: "As a chef, I'm very particular about my ingredients. Java Natur has been a game-changer for my restaurant's recipes.",
                     name: "Michael T.",
                     position: "Restaurant Owner, Chicago"
                 },
                 {
-                    text: "I've tried many vinegar brands but Natur Java stands out for its authentic taste and clean ingredients. Highly recommended!",
+                    text: "I've tried many vinegar brands but Java Natur stands out for its authentic taste and clean ingredients. Highly recommended!",
                     name: "Ayu W.",
                     position: "Food Blogger, Jakarta"
                 }
@@ -103,18 +103,18 @@ export default {
             traditional: 'Traditional Methods'
         },
         cta: {
-            title: 'Ready to Experience the Natur Java Difference?',
+            title: 'Ready to Experience the Java Natur Difference?',
             subtitle: 'Discover our range of premium natural vinegar products and transform your cooking and health today.',
-            joinTitle: 'Join the NATUR JAVA Family',
+            joinTitle: 'Join the Java Natur Family',
             joinDescription: 'Experience our premium natural vinegar products and join a community of health-conscious consumers and culinary enthusiasts.'
         }
     },
     company: {
         about: {
-            title: 'About NATUR JAVA',
-            description: 'CV. SIYUN JAYA produces high-quality vinegar products under the NATUR JAVA brand.',
+            title: 'About Java Natur',
+            description: 'CV. SIYUN JAYA produces high-quality vinegar products under the Java Natur brand.',
             subtitle: 'Company Values and Mission',
-            fullDescription: 'NATUR JAVA is a leading producer of premium quality vinegar products based in Indonesia. We especially produce vinegar with 100% fruit juice, providing consumers with rich minerals and organic substances. We continue to research for natural and healthy food supply and by-product reprocessing, making us one of the most trusted vinegar brands in the region.',
+            fullDescription: 'Java Natur is a leading producer of premium quality vinegar products based in Indonesia. We especially produce vinegar with 100% fruit juice, providing consumers with rich minerals and organic substances. We continue to research for natural and healthy food supply and by-product reprocessing, making us one of the most trusted vinegar brands in the region.',
             values: {
                 quality: 'Quality Excellence',
                 qualityDesc: 'Our commitment to producing only the highest quality products',
@@ -131,11 +131,11 @@ export default {
             }
         },
         story: {
-            title: 'NATUR JAVA Story',
-            description: 'The story behind the birth of the NATUR JAVA brand and our commitment to quality.',
+            title: 'Java Natur Story',
+            description: 'The story behind the birth of the Java Natur brand and our commitment to quality.',
             subtitle: 'Our Journey to Creating the Finest Vinegar',
-            paragraph1: 'The NATUR JAVA brand was born from a desire to bring traditional Indonesian vinegar-making techniques to the modern world. Our founders traveled throughout Java Island, learning from local artisans who had been making vinegar for generations.',
-            paragraph2: 'We believe in the power of natural ingredients and sustainable practices. Each bottle of NATUR JAVA vinegar represents our commitment to quality, health, and preserving traditional food culture.',
+            paragraph1: 'The Java Natur brand was born from a desire to bring traditional Indonesian vinegar-making techniques to the modern world. Our founders traveled throughout Java Island, learning from local artisans who had been making vinegar for generations.',
+            paragraph2: 'We believe in the power of natural ingredients and sustainable practices. Each bottle of Java Natur vinegar represents our commitment to quality, health, and preserving traditional food culture.',
             paragraph3: 'Today, we continue to honor traditional methods while constantly innovating, creating vinegar products that enhance the health and culinary experiences of customers worldwide.'
         },
         history: {
@@ -143,7 +143,7 @@ export default {
             subtitle: 'A Story of Growth and Development',
             events: {
                 dev2016: 'Development Begins',
-                dev2016Desc: 'Started the initial concept development and research for NATUR JAVA.',
+                dev2016Desc: 'Started the initial concept development and research for Java Natur.',
                 sample2018: 'Sample Production',
                 sample2018Desc: 'Developed and tested the first prototype products.',
                 production2019: 'Production Launch',
@@ -168,7 +168,7 @@ export default {
         },
         team: {
             title: 'Our Team',
-            subtitle: 'The People Behind NATUR JAVA'
+            subtitle: 'The People Behind Java Natur'
         }
     },
     vinegarInfo: {
@@ -323,7 +323,7 @@ export default {
         featured: 'Featured',
         naturalIngredients: '100% Natural Ingredients\n100% Fruit Juice\n100% Natural Fermentation',
         relatedProducts: 'Products You May Also Like',
-        relatedProductsDesc: 'Explore more premium vinegar products from the Natur Java collection.',
+        relatedProductsDesc: 'Explore more premium vinegar products from the Java Natur collection.',
         notFound: 'Product Not Found',
         notFoundDesc: 'The product you\'re looking for doesn\'t exist or has been removed.',
         storeOptions: {
@@ -341,7 +341,7 @@ export default {
             description: 'Find answers to common questions about our products'
         },
         productBenefits: {
-            title: 'The Natur Java Difference',
+            title: 'The Java Natur Difference',
             description: 'What makes our vinegar products different'
         },
         usage: {
@@ -408,7 +408,7 @@ export default {
                 },
                 {
                     question: "How should I store the vinegar?",
-                    answer: "Natur Java vinegar should be stored in a cool, dark place away from direct sunlight. Refrigeration after opening is not necessary but can help maintain flavor longer."
+                    answer: "Java Natur vinegar should be stored in a cool, dark place away from direct sunlight. Refrigeration after opening is not necessary but can help maintain flavor longer."
                 },
                 {
                     question: "What is the 'mother' in apple vinegar?",

@@ -1,6 +1,6 @@
 export default {
     common: {
-        siteName: 'NATUR JAVA',
+        siteName: 'Java Natur',
         menu: {
             home: '홈',
             company: '회사 정보',
@@ -78,20 +78,20 @@ export default {
         },
         testimonials: {
             title: '고객 후기',
-            subtitle: '전 세계 사람들이 Natur Java를 선택하는 이유를 알아보세요',
+            subtitle: '전 세계 사람들이 Java Natur를 선택하는 이유를 알아보세요',
             items: [
                 {
-                    text: "Natur Java 식초의 품질은 뛰어납니다. 매일 요리에 사용하고 있으며 건강이 크게 개선되었습니다.",
+                    text: "Java Natur 식초의 품질은 뛰어납니다. 매일 요리에 사용하고 있으며 건강이 크게 개선되었습니다.",
                     name: "Sarah J.",
                     position: "요리사, 뉴욕"
                 },
                 {
-                    text: "저는 요리사로서 재료에 매우 까다롭습니다. Natur Java는 제 레스토랑 요리에 혁신을 가져왔습니다.",
+                    text: "저는 요리사로서 재료에 매우 까다롭습니다. Java Natur는 제 레스토랑 요리에 혁신을 가져왔습니다.",
                     name: "Michael T.",
                     position: "레스토랑 오너, 시카고"
                 },
                 {
-                    text: "여러 식초 브랜드를 사용해봤지만, Natur Java는 그 진정한 맛과 깨끗한 성분으로 돋보입니다. 강력 추천합니다!",
+                    text: "여러 식초 브랜드를 사용해봤지만, Java Natur는 그 진정한 맛과 깨끗한 성분으로 돋보입니다. 강력 추천합니다!",
                     name: "Ayu W.",
                     position: "음식 블로거, 자카르타"
                 }
@@ -103,18 +103,18 @@ export default {
             traditional: '전통적인 방법'
         },
         cta: {
-            title: 'Natur Java의 차이를 경험할 준비가 되셨나요?',
+            title: 'Java Natur의 차이를 경험할 준비가 되셨나요?',
             subtitle: '프리미엄 천연 식초 제품 라인을 살펴보고 오늘 요리와 건강을 변화시켜 보세요.',
-            joinTitle: 'NATUR JAVA 가족이 되어보세요',
+            joinTitle: 'Java Natur 가족이 되어보세요',
             joinDescription: '최고급 천연 식초 제품을 경험하고 건강을 중시하는 소비자와 요리 애호가들의 커뮤니티에 참여하세요.'
         }
     },
     company: {
         about: {
-            title: 'NATUR JAVA 소개',
-            description: 'CV. SIYUN JAYA는 NATUR JAVA 브랜드로 고품질 식초 제품을 생산하는 회사입니다.',
+            title: 'Java Natur 소개',
+            description: 'CV. SIYUN JAYA는 Java Natur 브랜드로 고품질 식초 제품을 생산하는 회사입니다.',
             subtitle: '회사 가치와 사명',
-            fullDescription: 'NATUR JAVA는 인도네시아에 기반을 둔 프리미엄 품질의 식초 제품 선도적 생산 업체 입니다. 특히 과즙 100%로 식초를 생산하여 소비자들에게 풍부한 미네랄과 유기질을 공급하고 있습니다. 향후에도 자연적이고 건강한 식품을 공급하고 부산물 재처리를 위해 연구하고 있어 현재는 지역에서 가장 신뢰받는 식초 브랜드 중 하나로 성장했습니다.',
+            fullDescription: 'Java Natur는 인도네시아에 기반을 둔 프리미엄 품질의 식초 제품 선도적 생산 업체 입니다. 특히 과즙 100%로 식초를 생산하여 소비자들에게 풍부한 미네랄과 유기질을 공급하고 있습니다. 향후에도 자연적이고 건강한 식품을 공급하고 부산물 재처리를 위해 연구하고 있어 현재는 지역에서 가장 신뢰받는 식초 브랜드 중 하나로 성장했습니다.',
             values: {
                 quality: '품질 우수성',
                 qualityDesc: '최고 품질의 제품만을 생산하기 위한 우리의 약속',
@@ -131,11 +131,11 @@ export default {
             }
         },
         story: {
-            title: 'NATUR JAVA 스토리',
-            description: 'NATUR JAVA 브랜드의 탄생 배경과 품질에 대한 우리의 약속.',
+            title: 'Java Natur 스토리',
+            description: 'Java Natur 브랜드의 탄생 배경과 품질에 대한 우리의 약속.',
             subtitle: '최고의 식초를 만들기 위한 우리의 여정',
-            paragraph1: 'NATUR JAVA 브랜드는 전통적인 인도네시아 식초 제조 기술을 현대 세계에 가져오고자 하는 열망에서 탄생했습니다. 우리의 창립자들은 자바 섬 전역을 여행하며, 여러 세대에 걸쳐 식초를 만들어온 현지 장인들로부터 배웠습니다.',
-            paragraph2: '우리는 자연 재료와 지속 가능한 관행의 힘을 믿습니다. NATUR JAVA 식초의 각 병은 품질, 건강, 그리고 전통 식품 문화 보존에 대한 우리의 약속을 나타냅니다.',
+            paragraph1: 'Java Natur 브랜드는 전통적인 인도네시아 식초 제조 기술을 현대 세계에 가져오고자 하는 열망에서 탄생했습니다. 우리의 창립자들은 자바 섬 전역을 여행하며, 여러 세대에 걸쳐 식초를 만들어온 현지 장인들로부터 배웠습니다.',
+            paragraph2: '우리는 자연 재료와 지속 가능한 관행의 힘을 믿습니다. Java Natur 식초의 각 병은 품질, 건강, 그리고 전통 식품 문화 보존에 대한 우리의 약속을 나타냅니다.',
             paragraph3: '오늘날, 우리는 전통적인 방법을 존중하면서도 지속적으로 혁신하여, 전 세계 고객들의 건강과 요리 경험을 향상시키는 식초 제품을 만들고 있습니다.'
         },
         history: {
@@ -143,7 +143,7 @@ export default {
             subtitle: '성장과 발전의 이야기',
             events: {
                 dev2016: '개발 시작',
-                dev2016Desc: 'NATUR JAVA의 초기 개념 개발 및 연구를 시작했습니다.',
+                dev2016Desc: 'Java Natur의 초기 개념 개발 및 연구를 시작했습니다.',
                 sample2018: '샘플 제작',
                 sample2018Desc: '첫 번째 프로토타입 제품을 개발하고 테스트를 진행했습니다.',
                 production2019: '생산 시작',
@@ -168,7 +168,7 @@ export default {
         },
         team: {
             title: '우리 팀',
-            subtitle: 'NATUR JAVA를 만드는 사람들'
+            subtitle: 'Java Natur를 만드는 사람들'
         }
     },
     vinegarInfo: {
@@ -323,7 +323,7 @@ export default {
         featured: '추천',
         naturalIngredients: '100% 천연 재료\n100% 과즙\n100% 천연 발효',
         relatedProducts: '함께 구매하기 좋은 제품',
-        relatedProductsDesc: 'Natur Java 컬렉션의 다른 프리미엄 식초 제품을 살펴보세요.',
+        relatedProductsDesc: 'Java Natur 컬렉션의 다른 프리미엄 식초 제품을 살펴보세요.',
         notFound: '제품을 찾을 수 없습니다',
         notFoundDesc: '찾으시는 제품이 존재하지 않거나 삭제되었습니다.',
         storeOptions: {
@@ -341,7 +341,7 @@ export default {
             description: '제품에 대한 일반적인 질문에 대한 답변을 찾으세요'
         },
         productBenefits: {
-            title: 'Natur Java의 차별점',
+            title: 'Java Natur의 차별점',
             description: '다른 제품과 차별화되는 식초 제품의 특성'
         },
         usage: {
@@ -408,7 +408,7 @@ export default {
                 },
                 {
                     question: "식초는 어떻게 보관해야 하나요?",
-                    answer: "Natur Java 식초는 직사광선을 피해 서늘하고 어두운 곳에 보관하세요. 개봉 후 냉장 보관은 필요 없지만, 냉장 보관하면 맛을 더 오래 유지할 수 있습니다."
+                    answer: "Java Natur 식초는 직사광선을 피해 서늘하고 어두운 곳에 보관하세요. 개봉 후 냉장 보관은 필요 없지만, 냉장 보관하면 맛을 더 오래 유지할 수 있습니다."
                 },
                 {
                     question: "사과식초의 '마더'란 무엇인가요?",

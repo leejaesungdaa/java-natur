@@ -61,10 +61,11 @@ export default function ProductDetailPage({
         }
     };
 
-    const getLocalizedField = (field: string) => {
+    const getLocalizedField = (field: string): string => {
         if (!product) return '';
         const fieldKey = `${field}_${locale}` as keyof Product;
-        return product[fieldKey] || product[`${field}_en` as keyof Product] || '';
+        const value = product[fieldKey] || product[`${field}_en` as keyof Product] || '';
+        return typeof value === 'string' ? value : '';
     };
 
     if (loading) {
@@ -134,7 +135,7 @@ export default function ProductDetailPage({
                                 <div className="aspect-square bg-white rounded-2xl overflow-hidden shadow-inner">
                                     <img
                                         src={product.imageUrl || '/images/placeholder.jpg'}
-                                        alt={getLocalizedField('name')}
+                                        alt={getLocalizedField('name') || ''}
                                         className="w-full h-full object-contain p-8"
                                     />
                                 </div>

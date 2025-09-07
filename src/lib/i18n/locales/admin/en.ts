@@ -204,6 +204,7 @@ export const adminTranslationsEn = {
         featuredProducts: 'Featured Products',
         allProducts: 'All Products',
         products: 'Products',
+        socialMedia: 'Social Media',
         addNew: 'Add New',
         save: 'Save',
         saving: 'Saving...',

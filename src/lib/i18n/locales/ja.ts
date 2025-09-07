@@ -1,6 +1,6 @@
 export default {
     common: {
-        siteName: 'NATUR JAVA',
+        siteName: 'Java Natur',
         menu: {
             home: 'ホーム',
             company: '会社情報',
@@ -78,20 +78,20 @@ export default {
         },
         testimonials: {
             title: 'お客様の声',
-            subtitle: '人々がNatur Javaを選ぶ理由',
+            subtitle: '人々がJava Naturを選ぶ理由',
             items: [
                 {
-                    text: "Natur Java酢の品質は卓越しています。私は毎日料理に使用しており、健康が大幅に改善されました。",
+                    text: "Java Natur酢の品質は卓越しています。私は毎日料理に使用しており、健康が大幅に改善されました。",
                     name: "Sarah J.",
                     position: "シェフ、ニューヨーク"
                 },
                 {
-                    text: "シェフとして、私は材料にとても厳しいです。Natur Javaは私のレストランの料理に革命をもたらしました。",
+                    text: "シェフとして、私は材料にとても厳しいです。Java Naturは私のレストランの料理に革命をもたらしました。",
                     name: "Michael T.",
                     position: "レストランオーナー、シカゴ"
                 },
                 {
-                    text: "多くの酢ブランドを試しましたが、Natur Javaはその本物の味と清潔な成分で際立っています。強くお勧めします！",
+                    text: "多くの酢ブランドを試しましたが、Java Naturはその本物の味と清潔な成分で際立っています。強くお勧めします！",
                     name: "Ayu W.",
                     position: "フードブロガー、ジャカルタ"
                 }
@@ -103,18 +103,18 @@ export default {
             traditional: '伝統的な方法'
         },
         cta: {
-            title: 'Natur Javaの違いを体験する準備はできていますか？',
+            title: 'Java Naturの違いを体験する準備はできていますか？',
             subtitle: '私たちのプレミアム天然酢製品ラインを探索する',
-            joinTitle: 'NATUR JAVAファミリーに参加する',
+            joinTitle: 'Java Naturファミリーに参加する',
             joinDescription: '当社のプレミアム天然酢製品を体験し、健康志向の消費者と料理愛好家のコミュニティに参加してください。'
         }
     },
     company: {
         about: {
-            title: 'NATUR JAVAについて',
-            description: 'CV. SIYUN JAYAは、NATUR JAVAブランドの高品質な酢製品を生産する会社です。',
+            title: 'Java Naturについて',
+            description: 'CV. SIYUN JAYAは、Java Naturブランドの高品質な酢製品を生産する会社です。',
             subtitle: '企業価値と使命',
-            fullDescription: 'NATUR JAVAは、インドネシアを拠点とするプレミアム品質の酢製品の先駆的生産者です。特に果汁100%の酢を生産し、消費者に豊富なミネラルと有機物質を提供しています。今後も自然で健康的な食品の供給と副産物の再処理のための研究を続け、現在では地域で最も信頼される酢ブランドの一つに成長しています。',
+            fullDescription: 'Java Naturは、インドネシアを拠点とするプレミアム品質の酢製品の先駆的生産者です。特に果汁100%の酢を生産し、消費者に豊富なミネラルと有機物質を提供しています。今後も自然で健康的な食品の供給と副産物の再処理のための研究を続け、現在では地域で最も信頼される酢ブランドの一つに成長しています。',
             values: {
                 quality: '品質の卓越性',
                 qualityDesc: '最高品質の製品のみを生産するという私たちの約束',
@@ -131,11 +131,11 @@ export default {
             }
         },
         story: {
-            title: 'NATUR JAVAストーリー',
-            description: 'NATUR JAVAブランド誕生の背景と品質へのこだわり。',
+            title: 'Java Naturストーリー',
+            description: 'Java Naturブランド誕生の背景と品質へのこだわり。',
             subtitle: '最高の酢を作るための私たちの旅',
-            paragraph1: 'NATUR JAVAブランドは、インドネシアの伝統的な酢作りの技術を現代世界に持ち込みたいという願いから生まれました。私たちの創設者たちはジャワ島中を旅し、何世代にもわたって酢を作ってきた地元の職人たちから学びました。',
-            paragraph2: '私たちは自然の材料と持続可能な実践の力を信じています。NATUR JAVA酢の各ボトルは、品質、健康、そして伝統的な食文化の保存に対する私たちのコミットメントを表しています。',
+            paragraph1: 'Java Naturブランドは、インドネシアの伝統的な酢作りの技術を現代世界に持ち込みたいという願いから生まれました。私たちの創設者たちはジャワ島中を旅し、何世代にもわたって酢を作ってきた地元の職人たちから学びました。',
+            paragraph2: '私たちは自然の材料と持続可能な実践の力を信じています。Java Natur酢の各ボトルは、品質、健康、そして伝統的な食文化の保存に対する私たちのコミットメントを表しています。',
             paragraph3: '今日、私たちは伝統的な方法を尊重しながら絶えず革新し、世界中の顧客の健康と料理体験を向上させる酢製品を作り続けています。'
         },
         history: {
@@ -143,7 +143,7 @@ export default {
             subtitle: '成長と発展の物語',
             events: {
                 dev2016: '開発開始',
-                dev2016Desc: 'NATUR JAVAの初期コンセプト開発と研究を開始しました。',
+                dev2016Desc: 'Java Naturの初期コンセプト開発と研究を開始しました。',
                 sample2018: 'サンプル製作',
                 sample2018Desc: '最初のプロトタイプ製品を開発しテストを行いました。',
                 production2019: '生産開始',
@@ -168,7 +168,7 @@ export default {
         },
         team: {
             title: '私たちのチーム',
-            subtitle: 'NATUR JAVAを支える人々'
+            subtitle: 'Java Naturを支える人々'
         }
     },
     vinegarInfo: {
@@ -323,7 +323,7 @@ export default {
         featured: 'おすすめ',
         naturalIngredients: '100% 天然素材\n100% 果汁\n100% 天然発酵',
         relatedProducts: 'あなたも好きかもしれない製品',
-        relatedProductsDesc: 'Natur Javaコレクションの他のプレミアム酢製品をご覧ください。',
+        relatedProductsDesc: 'Java Naturコレクションの他のプレミアム酢製品をご覧ください。',
         notFound: '製品が見つかりません',
         notFoundDesc: 'お探しの製品は存在しないか、削除されました。',
         storeOptions: {
@@ -341,7 +341,7 @@ export default {
             description: '当社の製品に関するよくある質問への回答を見つける'
         },
         productBenefits: {
-            title: 'Natur Javaの違い',
+            title: 'Java Naturの違い',
             description: '当社の酢製品の特徴'
         },
         usage: {
@@ -408,7 +408,7 @@ export default {
                 },
                 {
                     question: "酢はどのように保存すべきですか？",
-                    answer: "Natur Java酢は、直射日光を避け、涼しく暗い場所に保管してください。開封後の冷蔵は必要ありませんが、冷蔵するとより長く風味を保つことができます。"
+                    answer: "Java Natur酢は、直射日光を避け、涼しく暗い場所に保管してください。開封後の冷蔵は必要ありませんが、冷蔵するとより長く風味を保つことができます。"
                 },
                 {
                     question: "りんご酢の「マザー」とは何ですか？",

@@ -7,8 +7,8 @@ import { Metadata } from 'next';
 import '@/app/globals.css';
 
 export const metadata: Metadata = {
-    title: 'NATUR JAVA',
-    description: 'CV. SIYUN JAYA - NATUR JAVA offers premium quality vinegar products made with natural ingredients from Java island.',
+    title: 'Java Natur',
+    description: 'CV. SIYUN JAYA - Java Natur offers premium quality vinegar products made with natural ingredients from Java island.',
 };
 
 export async function generateStaticParams() {

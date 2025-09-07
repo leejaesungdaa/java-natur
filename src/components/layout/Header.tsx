@@ -61,7 +61,7 @@ export default function Header({ locale }: HeaderProps) {
           <Link href={`/${locale}`} className="flex items-center">
             <Image
               src={logo}
-              alt="NATUR JAVA"
+              alt="Java Natur"
               width={140}
               height={45}
               className={`h-10 w-auto object-contain ${isTransparent ? 'brightness-0 invert' : ''}`}
@@ -125,7 +125,7 @@ export default function Header({ locale }: HeaderProps) {
                 <div className="flex items-center">
                   <Image
                     src={logo}
-                    alt="NATUR JAVA"
+                    alt="Java Natur"
                     width={120}
                     height={40}
                     className="h-8 w-auto object-contain"

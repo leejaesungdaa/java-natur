@@ -105,7 +105,7 @@ export default function ProductDetail({
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                        <span className="text-green-600 font-semibold mb-2 block">NATUR JAVA</span>
+                        <span className="text-green-600 font-semibold mb-2 block">Java Natur</span>
                         <h1 className="text-4xl font-bold text-gray-900 mb-2">{product.name}</h1>
                         <p className="text-xl text-gray-600 mb-6">{product.tagline}</p>
 

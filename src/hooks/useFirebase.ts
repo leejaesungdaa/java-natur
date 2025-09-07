@@ -164,20 +164,29 @@ export function useStoreOptions() {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        async function fetchStores() {
-            try {
-                setLoading(true);
-                const data = await settingService.getStoreOptions();
+        setLoading(true);
+        
+        // Real-time listener for store options
+        const q = query(collection(db, 'store_options'));
+        
+        const unsubscribe = onSnapshot(q,
+            (snapshot) => {
+                const data = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
                 setStores(data);
-            } catch (err) {
+                setLoading(false);
+                setError(null);
+            },
+            (err) => {
                 console.error("스토어 옵션 로드 중 오류:", err);
-                setError(err instanceof Error ? err : new Error('Unknown error'));
-            } finally {
+                setError(err);
                 setLoading(false);
             }
-        }
+        );
 
-        fetchStores();
+        return () => unsubscribe();
     }, []);
 
     return { stores, loading, error };
@@ -189,20 +198,29 @@ export function useSiteImages() {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        async function fetchImages() {
-            try {
-                setLoading(true);
-                const data = await siteImageService.getSiteImages();
-                setImages(data);
-            } catch (err) {
+        setLoading(true);
+        
+        // Real-time listener for site images
+        const docRef = doc(db, 'site_images', 'images');
+        
+        const unsubscribe = onSnapshot(docRef,
+            (docSnap) => {
+                if (docSnap.exists()) {
+                    setImages(docSnap.data() as { [key: string]: string });
+                } else {
+                    setImages({});
+                }
+                setLoading(false);
+                setError(null);
+            },
+            (err) => {
                 console.error("사이트 이미지 로드 중 오류:", err);
-                setError(err instanceof Error ? err : new Error('Unknown error'));
-            } finally {
+                setError(err);
                 setLoading(false);
             }
-        }
+        );
 
-        fetchImages();
+        return () => unsubscribe();
     }, []);
 
     return { images, loading, error };
@@ -307,20 +325,31 @@ export function useCompanyHistory(locale: Locale) {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        async function fetchHistory() {
-            try {
-                setLoading(true);
-                const data = await homePageService.getCompanyHistory(locale);
+        setLoading(true);
+        
+        // Real-time listener for company history
+        const q = query(collection(db, 'company_history'), orderBy('order', 'asc'));
+        
+        const unsubscribe = onSnapshot(q,
+            (snapshot) => {
+                const data = snapshot.docs
+                    .filter(doc => !doc.data().isDeleted)
+                    .map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }));
                 setHistory(data);
-            } catch (err) {
+                setLoading(false);
+                setError(null);
+            },
+            (err) => {
                 console.error("회사 연혁 로드 중 오류:", err);
-                setError(err instanceof Error ? err : new Error('Unknown error'));
-            } finally {
+                setError(err);
                 setLoading(false);
             }
-        }
+        );
 
-        fetchHistory();
+        return () => unsubscribe();
     }, [locale]);
 
     return { history, loading, error };
@@ -332,20 +361,39 @@ export function useVinegarInfo(locale: Locale) {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        async function fetchVinegarInfo() {
-            try {
-                setLoading(true);
-                const data = await homePageService.getVinegarInfo(locale);
+        setLoading(true);
+        
+        // Real-time listener for vinegar info
+        const q = query(collection(db, 'vinegar_info'), orderBy('order', 'asc'));
+        
+        const unsubscribe = onSnapshot(q,
+            (snapshot) => {
+                const data = snapshot.docs
+                    .filter(doc => !doc.data().isDeleted)
+                    .map(doc => {
+                        const docData = doc.data();
+                        return {
+                            id: doc.id,
+                            title: docData[`title_${locale}`] || docData.title || '',
+                            ingredients: docData[`ingredients_${locale}`] || docData.ingredients || '',
+                            healthEffects: docData[`healthEffects_${locale}`] || docData.healthEffects || [],
+                            feature: docData[`feature_${locale}`] || docData.feature || '',
+                            imageUrl: docData.imageUrl || '',
+                            order: docData.order || 0
+                        };
+                    });
                 setVinegarInfo(data);
-            } catch (err) {
+                setLoading(false);
+                setError(null);
+            },
+            (err) => {
                 console.error("식초 정보 로드 중 오류:", err);
-                setError(err instanceof Error ? err : new Error('Unknown error'));
-            } finally {
+                setError(err);
                 setLoading(false);
             }
-        }
+        );
 
-        fetchVinegarInfo();
+        return () => unsubscribe();
     }, [locale]);
 
     return { vinegarInfo, loading, error };

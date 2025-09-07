@@ -168,6 +168,7 @@ export const adminTranslationsId = {
         featuredProducts: 'Produk Unggulan',
         allProducts: 'Semua Produk',
         products: 'Produk',
+        socialMedia: 'Media Sosial',
         addNew: 'Tambah Baru',
         save: 'Simpan',
         saving: 'Menyimpan...',

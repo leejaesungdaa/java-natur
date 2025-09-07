@@ -15,8 +15,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'NATUR JAVA',
-  description: 'CV. SIYUN JAYA - NATUR JAVA offers premium quality vinegar products made with natural ingredients from Java island.',
+  title: 'Java Natur',
+  description: 'CV. SIYUN JAYA - Java Natur offers premium quality vinegar products made with natural ingredients from Java island.',
   keywords: ['vinegar', 'natural vinegar', 'natur java', 'apple cider vinegar', 'java', 'indonesia', 'organic', 'health'],
   authors: [{ name: 'CV. SIYUN JAYA' }],
   creator: 'CV. SIYUN JAYA',
@@ -25,21 +25,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://naturjava.com',
-    siteName: 'NATUR JAVA',
-    title: 'NATUR JAVA',
+    siteName: 'Java Natur',
+    title: 'Java Natur',
     description: 'Premium quality vinegar products made with natural ingredients from Java island.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'NATUR JAVA'
+        alt: 'Java Natur'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NATUR JAVA',
+    title: 'Java Natur',
     description: 'Premium quality vinegar products made with natural ingredients from Java island.',
     images: ['/images/og-image.jpg'],
   },

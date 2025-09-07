@@ -168,6 +168,7 @@ export const adminTranslationsAr = {
         featuredProducts: 'المنتجات المميزة',
         allProducts: 'جميع المنتجات',
         products: 'المنتجات',
+        socialMedia: 'وسائل التواصل الاجتماعي',
         addNew: 'إضافة جديد',
         save: 'حفظ',
         saving: 'جارٍ الحفظ...',

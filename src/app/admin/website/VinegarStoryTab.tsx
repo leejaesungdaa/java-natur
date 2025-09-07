@@ -6,6 +6,7 @@ import { db } from '@/lib/firebase/firebaseConfig';
 import { imageService } from '@/lib/firebase/services';
 import { getCurrentAdminInfo } from '@/lib/auth/authHelpers';
 import { formatJakartaTime } from '@/lib/utils/dateFormat';
+import { scrollToForm } from '@/lib/utils/scrollToForm';
 
 interface VinegarStoryTabProps {
     currentLocale: string;
@@ -17,6 +18,7 @@ interface VinegarStoryTabProps {
 
 interface StoryItem {
     id?: string;
+    category?: string;
     title: string;
     title_ko?: string;
     title_en?: string;
@@ -47,6 +49,8 @@ interface StoryItem {
     updatedBy?: string;
     updatedByName?: string;
     updatedAt?: string;
+    [key: `title_${string}`]: string | undefined;
+    [key: `summary_${string}`]: string | undefined;
     deletedBy?: string;
     deletedByName?: string;
     deletedAt?: string;
@@ -79,12 +83,15 @@ interface VideoItem {
     updatedByName?: string;
     updatedAt?: string;
     deletedBy?: string;
+    [key: `title_${string}`]: string | undefined;
+    [key: `description_${string}`]: string | undefined;
     deletedByName?: string;
     deletedAt?: string;
 }
 
 interface ProcessItem {
     id?: string;
+    step?: number;
     title: string;
     title_ko?: string;
     title_en?: string;
@@ -107,6 +114,8 @@ interface ProcessItem {
     createdAt?: string;
     updatedBy?: string;
     updatedByName?: string;
+    [key: `title_${string}`]: string | undefined;
+    [key: `description_${string}`]: string | undefined;
     updatedAt?: string;
     deletedBy?: string;
     deletedByName?: string;
@@ -630,7 +639,7 @@ export const VinegarStoryTab: React.FC<VinegarStoryTabProps> = ({
         };
         setEditingItem(localizedItem);
         setEditingType(type);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToForm();
     };
 
     const renderAboutTab = () => (
@@ -666,6 +675,7 @@ export const VinegarStoryTab: React.FC<VinegarStoryTabProps> = ({
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-gray-50 p-6 rounded-lg space-y-4 mb-6"
+                    data-edit-form
                 >
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -966,6 +976,7 @@ export const VinegarStoryTab: React.FC<VinegarStoryTabProps> = ({
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-gray-50 p-6 rounded-lg space-y-4 mb-6"
+                    data-edit-form
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -1199,6 +1210,7 @@ export const VinegarStoryTab: React.FC<VinegarStoryTabProps> = ({
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-gray-50 p-6 rounded-lg space-y-4 mb-6"
+                    data-edit-form
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>

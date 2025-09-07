@@ -87,7 +87,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
               <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/about-image.jpg"
-                  alt="About NATUR JAVA"
+                  alt="About Java Natur"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -182,7 +182,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
             <span className="inline-block text-green-600 font-semibold mb-4 tracking-wider">TESTIMONIALS</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-6">What Our Customers Say</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover why people around the world choose Natur Java for their vinegar needs.
+              Discover why people around the world choose Java Natur for their vinegar needs.
             </p>
           </motion.div>
 
@@ -190,19 +190,19 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
             {[
               {
                 rating: 5,
-                text: "The quality of Natur Java vinegar is exceptional. I use it daily in my cooking and have noticed significant health improvements.",
+                text: "The quality of Java Natur vinegar is exceptional. I use it daily in my cooking and have noticed significant health improvements.",
                 name: "Sarah J.",
                 position: "Chef, New York"
               },
               {
                 rating: 5,
-                text: "As a chef, I'm very particular about my ingredients. Natur Java has been a game-changer for my restaurant's recipes.",
+                text: "As a chef, I'm very particular about my ingredients. Java Natur has been a game-changer for my restaurant's recipes.",
                 name: "Michael T.",
                 position: "Restaurant Owner, Chicago"
               },
               {
                 rating: 5,
-                text: "I've tried many vinegar brands but Natur Java stands out for its authentic taste and clean ingredients. Highly recommended!",
+                text: "I've tried many vinegar brands but Java Natur stands out for its authentic taste and clean ingredients. Highly recommended!",
                 name: "Ayu W.",
                 position: "Food Blogger, Jakarta"
               }

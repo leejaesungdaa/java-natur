@@ -62,6 +62,7 @@ export default function AboutSection({ locale, aboutImage, aboutData }: AboutSec
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 50vw"
+                                style={{ objectFit: 'cover' }}
                             />
                         </div>
                         <motion.div

@@ -6,6 +6,7 @@ import { db } from '@/lib/firebase/firebaseConfig';
 import { imageService } from '@/lib/firebase/services';
 import { getCurrentAdminInfo } from '@/lib/auth/authHelpers';
 import { formatJakartaTime } from '@/lib/utils/dateFormat';
+import { scrollToForm } from '@/lib/utils/scrollToForm';
 
 interface VinegarInfoTabProps {
     vinegarInfoItems: any[];
@@ -658,8 +659,7 @@ export const VinegarInfoTab: React.FC<VinegarInfoTabProps> = ({
                                                 feature: item[`feature_${currentLocale}`] || item.feature || ''
                                             };
                                             setEditingItem(localizedItem);
-                                            // 스크롤을 상단으로 이동
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                            scrollToForm();
                                         }}
                                         className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
                                     >

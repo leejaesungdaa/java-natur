@@ -5,6 +5,7 @@ export interface Product {
     description: string;
     imageSrc: string;
     featured: boolean;
+    order?: number;
     price?: string;
     tagline?: string;
     longDescription?: string;
@@ -12,6 +13,8 @@ export interface Product {
     benefits?: string[];
     images?: string[];
     relatedProducts?: string[];
+    [key: `name_${string}`]: string;
+    [key: `description_${string}`]: string;
 }
 
 export interface Store {

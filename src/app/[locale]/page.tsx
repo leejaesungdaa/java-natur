@@ -5,8 +5,8 @@ import { Suspense, useMemo } from 'react';
 import { Locale, getTranslation } from '@/lib/i18n/config';
 import { useSiteImages, useFeaturedProducts, useHomePageData } from '@/hooks/useFirebase';
 
-const HeroSection = dynamic(() => import('@/components/home/HeroSection'), {
-    loading: () => <div className="min-h-screen animate-pulse bg-gray-200" />,
+const ModernHeroSection = dynamic(() => import('@/components/home/ModernHeroSection'), {
+    loading: () => <div className="min-h-screen animate-pulse bg-gradient-to-br from-gray-100 to-gray-200" />,
     ssr: false
 });
 
@@ -66,10 +66,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
     return (
         <div className="w-full">
             <Suspense fallback={<div className="min-h-screen animate-pulse bg-gray-200" />}>
-                <HeroSection 
-                    locale={locale} 
-                    heroBg={heroBg}
-                    heroData={heroData}
+                <ModernHeroSection 
+                    t={t}
                 />
             </Suspense>
 

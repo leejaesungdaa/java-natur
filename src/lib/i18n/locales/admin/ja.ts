@@ -168,6 +168,7 @@ export const adminTranslationsJa = {
         featuredProducts: '注目製品',
         allProducts: 'すべての製品',
         products: '製品',
+        socialMedia: 'ソーシャルメディア',
         addNew: '新規追加',
         save: '保存',
         saving: '保存中...',

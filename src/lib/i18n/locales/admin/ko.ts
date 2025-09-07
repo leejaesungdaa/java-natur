@@ -204,6 +204,7 @@ export const adminTranslationsKo = {
         featuredProducts: '대표 제품',
         allProducts: '모든 제품',
         products: '제품',
+        socialMedia: 'SNS 관리',
         addNew: '새로 추가',
         save: '저장',
         saving: '저장 중...',

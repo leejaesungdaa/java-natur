@@ -1,6 +1,6 @@
 export default {
     common: {
-        siteName: 'NATUR JAVA',
+        siteName: 'Java Natur',
         menu: {
             home: 'Beranda',
             company: 'Perusahaan',
@@ -78,20 +78,20 @@ export default {
         },
         testimonials: {
             title: 'Testimoni',
-            subtitle: 'Mengapa Orang Memilih Natur Java',
+            subtitle: 'Mengapa Orang Memilih Java Natur',
             items: [
                 {
-                    text: "Kualitas cuka Natur Java sangat luar biasa. Saya menggunakannya setiap hari dalam masakan saya dan telah melihat peningkatan kesehatan yang signifikan.",
+                    text: "Kualitas cuka Java Natur sangat luar biasa. Saya menggunakannya setiap hari dalam masakan saya dan telah melihat peningkatan kesehatan yang signifikan.",
                     name: "Sarah J.",
                     position: "Koki, New York"
                 },
                 {
-                    text: "Sebagai seorang koki, saya sangat teliti tentang bahan-bahan. Natur Java telah merevolusi hidangan di restoran saya.",
+                    text: "Sebagai seorang koki, saya sangat teliti tentang bahan-bahan. Java Natur telah merevolusi hidangan di restoran saya.",
                     name: "Michael T.",
                     position: "Pemilik Restoran, Chicago"
                 },
                 {
-                    text: "Saya telah mencoba banyak merek cuka, tetapi Natur Java menonjol dengan rasa otentiknya dan bahan-bahan bersih. Sangat direkomendasikan!",
+                    text: "Saya telah mencoba banyak merek cuka, tetapi Java Natur menonjol dengan rasa otentiknya dan bahan-bahan bersih. Sangat direkomendasikan!",
                     name: "Ayu W.",
                     position: "Blogger Makanan, Jakarta"
                 }
@@ -103,18 +103,18 @@ export default {
             traditional: 'Metode Tradisional'
         },
         cta: {
-            title: 'Siap Merasakan Perbedaan Natur Java?',
+            title: 'Siap Merasakan Perbedaan Java Natur?',
             subtitle: 'Jelajahi rangkaian produk cuka alami premium kami',
-            joinTitle: 'Bergabunglah dengan Keluarga NATUR JAVA',
+            joinTitle: 'Bergabunglah dengan Keluarga Java Natur',
             joinDescription: 'Rasakan produk cuka alami premium kami dan bergabunglah dengan komunitas konsumen yang sadar kesehatan dan penggemar kuliner.'
         }
     },
     company: {
         about: {
-            title: 'Tentang NATUR JAVA',
-            description: 'CV. SIYUN JAYA adalah perusahaan yang memproduksi produk cuka berkualitas tinggi di bawah merek NATUR JAVA.',
+            title: 'Tentang Java Natur',
+            description: 'CV. SIYUN JAYA adalah perusahaan yang memproduksi produk cuka berkualitas tinggi di bawah merek Java Natur.',
             subtitle: 'Nilai dan Misi Perusahaan',
-            fullDescription: 'NATUR JAVA adalah produsen terkemuka produk cuka berkualitas premium yang berbasis di Indonesia. Kami khususnya memproduksi cuka dengan jus buah 100%, memberikan konsumen mineral kaya dan zat organik. Kami terus meneliti untuk menyediakan makanan alami dan sehat serta mengolah kembali produk sampingan, menjadikan kami salah satu merek cuka paling tepercaya di wilayah ini.',
+            fullDescription: 'Java Natur adalah produsen terkemuka produk cuka berkualitas premium yang berbasis di Indonesia. Kami khususnya memproduksi cuka dengan jus buah 100%, memberikan konsumen mineral kaya dan zat organik. Kami terus meneliti untuk menyediakan makanan alami dan sehat serta mengolah kembali produk sampingan, menjadikan kami salah satu merek cuka paling tepercaya di wilayah ini.',
             values: {
                 quality: 'Keunggulan Kualitas',
                 qualityDesc: 'Komitmen kami untuk memproduksi hanya produk dengan kualitas tertinggi',
@@ -131,11 +131,11 @@ export default {
             }
         },
         story: {
-            title: 'Cerita NATUR JAVA',
-            description: 'Cerita di balik kelahiran merek NATUR JAVA dan komitmen kami terhadap kualitas.',
+            title: 'Cerita Java Natur',
+            description: 'Cerita di balik kelahiran merek Java Natur dan komitmen kami terhadap kualitas.',
             subtitle: 'Perjalanan Kami Menciptakan Cuka Terbaik',
-            paragraph1: 'Merek NATUR JAVA lahir dari keinginan untuk membawa teknik pembuatan cuka tradisional Indonesia ke dunia modern. Pendiri kami melakukan perjalanan ke seluruh Pulau Jawa, belajar dari pengrajin lokal yang telah membuat cuka selama beberapa generasi.',
-            paragraph2: 'Kami percaya pada kekuatan bahan alami dan praktik berkelanjutan. Setiap botol cuka NATUR JAVA mewakili komitmen kami terhadap kualitas, kesehatan, dan pelestarian budaya makanan tradisional.',
+            paragraph1: 'Merek Java Natur lahir dari keinginan untuk membawa teknik pembuatan cuka tradisional Indonesia ke dunia modern. Pendiri kami melakukan perjalanan ke seluruh Pulau Jawa, belajar dari pengrajin lokal yang telah membuat cuka selama beberapa generasi.',
+            paragraph2: 'Kami percaya pada kekuatan bahan alami dan praktik berkelanjutan. Setiap botol cuka Java Natur mewakili komitmen kami terhadap kualitas, kesehatan, dan pelestarian budaya makanan tradisional.',
             paragraph3: 'Saat ini, kami terus menghormati metode tradisional sambil terus berinovasi, menciptakan produk cuka yang meningkatkan kesehatan dan pengalaman kuliner pelanggan di seluruh dunia.'
         },
         history: {
@@ -143,7 +143,7 @@ export default {
             subtitle: 'Cerita Pertumbuhan dan Perkembangan',
             events: {
                 dev2016: 'Mulai Pengembangan',
-                dev2016Desc: 'Memulai pengembangan konsep awal dan penelitian untuk NATUR JAVA.',
+                dev2016Desc: 'Memulai pengembangan konsep awal dan penelitian untuk Java Natur.',
                 sample2018: 'Produksi Sampel',
                 sample2018Desc: 'Mengembangkan dan menguji produk prototipe pertama.',
                 production2019: 'Peluncuran Produksi',
@@ -168,7 +168,7 @@ export default {
         },
         team: {
             title: 'Tim Kami',
-            subtitle: 'Orang-Orang di Balik NATUR JAVA'
+            subtitle: 'Orang-Orang di Balik Java Natur'
         }
     },
     vinegarInfo: {
@@ -323,7 +323,7 @@ export default {
         featured: 'Unggulan',
         naturalIngredients: '100% Bahan Alami\n100% Jus Buah\n100% Fermentasi Alami',
         relatedProducts: 'Produk yang Mungkin Anda Suka',
-        relatedProductsDesc: 'Jelajahi produk cuka premium lainnya dari koleksi Natur Java.',
+        relatedProductsDesc: 'Jelajahi produk cuka premium lainnya dari koleksi Java Natur.',
         notFound: 'Produk Tidak Ditemukan',
         notFoundDesc: 'Produk yang Anda cari tidak ada atau telah dihapus.',
         storeOptions: {
@@ -341,7 +341,7 @@ export default {
             description: 'Temukan jawaban untuk pertanyaan umum tentang produk kami'
         },
         productBenefits: {
-            title: 'Perbedaan Natur Java',
+            title: 'Perbedaan Java Natur',
             description: 'Apa yang membuat produk cuka kami berbeda'
         },
         usage: {
@@ -408,7 +408,7 @@ export default {
                 },
                 {
                     question: "Bagaimana cara menyimpan cuka?",
-                    answer: "Cuka Natur Java harus disimpan di tempat yang sejuk dan gelap, jauh dari sinar matahari langsung. Pendinginan setelah dibuka tidak diperlukan tetapi dapat membantu mempertahankan rasa lebih lama."
+                    answer: "Cuka Java Natur harus disimpan di tempat yang sejuk dan gelap, jauh dari sinar matahari langsung. Pendinginan setelah dibuka tidak diperlukan tetapi dapat membantu mempertahankan rasa lebih lama."
                 },
                 {
                     question: "Apa itu 'mother' dalam cuka apel?",

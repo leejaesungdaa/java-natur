@@ -34,6 +34,8 @@ interface Product {
     updatedBy?: string;
     updatedByName?: string;
     updatedAt?: string;
+    [key: `name_${string}`]: string | undefined;
+    [key: `description_${string}`]: string | undefined;
 }
 
 interface AllProductsTabProps {

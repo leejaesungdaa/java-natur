@@ -39,24 +39,23 @@ export const productService = {
             const productsRef: CollectionReference = collection(db, 'products');
             const q: Query = query(productsRef, orderBy('order', 'asc'));
             const snapshot = await getDocs(q);
-            return snapshot.docs.map(doc => {
-                const data = doc.data();
-                // Check if not deleted
-                if (data.isDeleted) return null;
-                
-                // Get localized name and description
-                return {
-                    id: doc.id,
-                    name: data[`name_${locale}`] || data.name_ko || data.name_en || data.name || '',
-                    description: data[`description_${locale}`] || data.description_ko || data.description_en || data.description || '',
-                    imageUrl: data.imageUrl || '',
-                    productLink: data.productLink || '',
-                    shopeeLink: data.shopeeLink || '',
-                    tokopediaLink: data.tokopediaLink || '',
-                    featured: data.featured || false,
-                    order: data.order || 0
-                };
-            }).filter(item => item !== null);
+            return snapshot.docs
+                .filter(doc => !doc.data().isDeleted)
+                .map(doc => {
+                    const data = doc.data();
+                    
+                    return {
+                        id: doc.id,
+                        name: data[`name_${locale}`] || data.name_ko || data.name_en || data.name || '',
+                        description: data[`description_${locale}`] || data.description_ko || data.description_en || data.description || '',
+                        imageUrl: data.imageUrl || '',
+                        productLink: data.productLink || '',
+                        shopeeLink: data.shopeeLink || '',
+                        tokopediaLink: data.tokopediaLink || '',
+                        featured: data.featured || false,
+                        order: data.order || 0
+                    };
+                });
         } catch (error) {
             console.error('Error fetching all products:', error);
             return [];
@@ -72,24 +71,23 @@ export const productService = {
                 orderBy('order', 'asc')
             );
             const snapshot = await getDocs(q);
-            return snapshot.docs.map(doc => {
-                const data = doc.data();
-                // Check if not deleted
-                if (data.isDeleted) return null;
-                
-                // Get localized name and description
-                return {
-                    id: doc.id,
-                    name: data[`name_${locale}`] || data.name_ko || data.name_en || data.name || '',
-                    description: data[`description_${locale}`] || data.description_ko || data.description_en || data.description || '',
-                    imageUrl: data.imageUrl || '',
-                    productLink: data.productLink || '',
-                    shopeeLink: data.shopeeLink || '',
-                    tokopediaLink: data.tokopediaLink || '',
-                    featured: data.featured,
-                    order: data.order || 0
-                };
-            }).filter(item => item !== null);
+            return snapshot.docs
+                .filter(doc => !doc.data().isDeleted)
+                .map(doc => {
+                    const data = doc.data();
+                    
+                    return {
+                        id: doc.id,
+                        name: data[`name_${locale}`] || data.name_ko || data.name_en || data.name || '',
+                        description: data[`description_${locale}`] || data.description_ko || data.description_en || data.description || '',
+                        imageUrl: data.imageUrl || '',
+                        productLink: data.productLink || '',
+                        shopeeLink: data.shopeeLink || '',
+                        tokopediaLink: data.tokopediaLink || '',
+                        featured: data.featured,
+                        order: data.order || 0
+                    };
+                });
         } catch (error) {
             console.error('Error fetching featured products:', error);
             return [];

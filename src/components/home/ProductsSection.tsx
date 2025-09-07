@@ -66,8 +66,9 @@ export default function ProductsSection({ locale, products, loading }: ProductsS
                                         alt={product.name}
                                         fill
                                         priority={index === 0}
-                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        className="object-contain transition-transform duration-700 group-hover:scale-110"
                                         sizes="(max-width: 768px) 100vw, 33vw"
+                                        style={{ objectFit: 'contain' }}
                                     />
                                 </div>
                                 <div className="p-8">

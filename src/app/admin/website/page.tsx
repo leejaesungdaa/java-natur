@@ -7,12 +7,13 @@ import RefreshIndicator from '@/components/admin/RefreshIndicator';
 import { VinegarInfoTab } from './VinegarInfoTab';
 import { VinegarStoryTab } from './VinegarStoryTab';
 import { ProductsTab } from './ProductsTab';
+import { SocialMediaTab } from './SocialMediaTab';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Globe, Building2, Phone, MapPin, Mail, History, 
     Beaker, Video, Package, Plus, Edit2, Trash2, Save, 
     X, ChevronRight, Upload, Eye, Clock, Calendar,
-    FileText, PlayCircle, Factory, Star
+    FileText, PlayCircle, Factory, Star, Share2
 } from 'lucide-react';
 import { collection, getDocs, doc, updateDoc, deleteDoc, addDoc, query, orderBy, getDocsFromServer } from 'firebase/firestore';
 import { db } from '@/lib/firebase/firebaseConfig';
@@ -25,7 +26,7 @@ import { formatJakartaTime } from '@/lib/utils/dateFormat';
 import { ToastContainer } from '@/components/ui/Toast';
 import { useToast } from '@/hooks/useToast';
 
-type TabType = 'history' | 'contact' | 'vinegar-info' | 'vinegar-story' | 'products';
+type TabType = 'history' | 'contact' | 'vinegar-info' | 'vinegar-story' | 'products' | 'social-media';
 
 interface HistoryItem {
     id?: string;
@@ -166,6 +167,11 @@ const tabConfig = {
         label: 'products',
         icon: Package,
         color: 'from-indigo-400 to-indigo-600'
+    },
+    'social-media': { 
+        label: 'socialMedia',
+        icon: Share2,
+        color: 'from-pink-400 to-pink-600'
     }
 };
 
@@ -880,6 +886,15 @@ export default function WebsiteManagement() {
         />
     );
 
+    const renderSocialMediaTab = () => (
+        <SocialMediaTab
+            currentLocale={currentLocale}
+            showToast={showToast}
+            t={t}
+            refreshKey={refreshKey}
+        />
+    );
+
     const renderFeaturedProductsTabOld = () => (
         <div className="space-y-4">
             <div className="flex justify-between items-center mb-6">
@@ -1441,6 +1456,7 @@ export default function WebsiteManagement() {
                                 {activeTab === 'vinegar-info' && renderVinegarInfoTab()}
                                 {activeTab === 'vinegar-story' && renderVinegarStoryTab()}
                                 {activeTab === 'products' && renderProductsTab()}
+                                {activeTab === 'social-media' && renderSocialMediaTab()}
                             </motion.div>
                         </AnimatePresence>
                     </div>

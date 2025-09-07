@@ -168,6 +168,7 @@ export const adminTranslationsZh = {
         featuredProducts: '特色产品',
         allProducts: '所有产品',
         products: '产品',
+        socialMedia: '社交媒体',
         addNew: '添加新',
         save: '保存',
         saving: '保存中...',
