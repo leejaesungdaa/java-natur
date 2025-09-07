@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Locale, getLocaleName, getLocaleFlag } from '@/lib/i18n/config';
 import { motion, AnimatePresence } from 'framer-motion';
+import { setPreferredLanguage } from '@/lib/utils/languageCache';
 
 interface LanguageSelectorProps {
     locale: Locale;
@@ -33,6 +34,7 @@ export default function LanguageSelector({
     const currentLanguage = languageOptions.find((lang) => lang.key === locale) || languageOptions[0];
 
     const switchLanguage = (newLocale: string) => {
+        setPreferredLanguage(newLocale);
         const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
         window.location.pathname = newPathname;
     };

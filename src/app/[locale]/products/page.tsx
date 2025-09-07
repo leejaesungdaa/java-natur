@@ -5,69 +5,42 @@ import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAnimation, getAnimationVariant } from '@/hooks/useAnimation';
+import { ShoppingCart, X, Star } from 'lucide-react';
 import HeroSection from '@/components/sections/HeroSection';
 import SectionHeader from '@/components/sections/SectionHeader';
-import ProductGrid from '@/components/sections/ProductGrid';
-import CategoryFilter from '@/components/sections/CategoryFilter';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import CallToAction from '@/components/sections/CallToAction';
+import { useProducts, useSiteImages } from '@/hooks/useFirebase';
+import { Product } from '@/types';
 
 export default function ProductsPage({ params: { locale } }: { params: { locale: Locale } }) {
     const t = getTranslation(locale);
-    const [activeCategory, setActiveCategory] = useState('all');
+    const router = useRouter();
+    const { products: rawProducts, loading: productsLoading } = useProducts(locale);
+    const { images, loading: imagesLoading } = useSiteImages();
 
-    const [featuredRef, featuredVisible] = useAnimation({ threshold: 0.2 });
     const [allProductsRef, allProductsVisible] = useAnimation({ threshold: 0.2 });
 
-    const products = [
-        {
-            id: 'sugarcane-pineapple',
-            name: '사탕수수 파인애플 식초',
-            category: 'pineapple',
-            description: '사탕수수 80%\n파인애플 20%',
-            imageSrc: '/images/products/product-1.jpg',
-            featured: true,
-        },
-        {
-            id: 'sugarcane-apple',
-            name: '사탕수수 사과 식초',
-            category: 'apple',
-            description: '사탕수수 80%\n사과 20%',
-            imageSrc: '/images/products/product-2.jpg',
-            featured: true,
-        },
-        {
-            id: 'sugarcane-dragonfruit',
-            name: '사탕수수 용과 식초',
-            category: 'dragonFruit',
-            description: '사탕수수 80%\n용과 20%',
-            imageSrc: '/images/products/product-3.jpg',
-            featured: true,
-        },
-        {
-            id: 'sugarcane-noni',
-            name: '사탕수수 노니 식초',
-            category: 'noni',
-            description: '사탕수수 80%\n노니 20%\n(출시 예정)',
-            imageSrc: '/images/products/product-4.jpg',
-            featured: false,
-        }
-    ];
+    const heroBg = imagesLoading ? "/images/products/products-hero.jpg" : (images.productsHeroBg || "/images/products/products-hero.jpg");
 
-    const categories = [
-        { id: 'all', name: t.products.categories.all },
-        { id: 'pineapple', name: t.products.categories.pineapple },
-        { id: 'apple', name: t.products.categories.apple },
-        { id: 'dragonFruit', name: t.products.categories.dragonFruit },
-        { id: 'noni', name: t.products.categories.noni },
-    ];
+    const products: Product[] = rawProducts.map(p => ({
+        id: p.id,
+        name: p.name || '',
+        category: p.category || '',
+        description: p.description || '',
+        imageSrc: p.imageUrl || p.imageSrc || '',
+        featured: p.featured || false,
+        order: p.order || 999
+    }));
 
-    const filteredProducts = activeCategory === 'all'
-        ? products
-        : products.filter(product => product.category === activeCategory);
-
-    const featuredProducts = products.filter(product => product.featured);
+    // Sort products: featured first, then by order
+    const sortedProducts = [...products].sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return (a.order || 999) - (b.order || 999);
+    });
 
     const qualityFeatures = [
         {
@@ -101,34 +74,15 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
 
     return (
         <div className="w-full pt-16">
-            {/* Hero Section */}
             <HeroSection
                 locale={locale}
                 title={t.products.all}
                 subtitle={t.products.productBenefits.description}
-                imageSrc="/images/products/products-hero.jpg"
+                imageSrc={heroBg}
                 height="medium"
             />
 
-            {/* Featured Products Section */}
-            <section ref={featuredRef} className="py-24 bg-white">
-                <div className="container mx-auto px-4">
-                    <SectionHeader
-                        overline={t.products.featured}
-                        title={t.home.products.featuredProducts}
-                        subtitle={t.home.products.subtitle}
-                    />
-
-                    <ProductGrid
-                        locale={locale}
-                        products={featuredProducts}
-                        columns={3}
-                    />
-                </div>
-            </section>
-
-            {/* All Products Section */}
-            <section ref={allProductsRef} className="py-24 bg-gray-50">
+            <section ref={allProductsRef} className="py-24 bg-white">
                 <div className="container mx-auto px-4">
                     <SectionHeader
                         overline="CATALOG"
@@ -136,24 +90,64 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
                         subtitle={t.products.usage.description}
                     />
 
-                    {/* Category Filter */}
-                    <CategoryFilter
-                        categories={categories}
-                        activeCategory={activeCategory}
-                        onChange={setActiveCategory}
-                    />
-
-                    <ProductGrid
-                        locale={locale}
-                        products={filteredProducts}
-                        columns={3}
-                        showCategory={true}
-                    />
+                    {productsLoading ? (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {Array(6).fill(0).map((_, index) => (
+                                <div key={index} className="bg-gray-100 rounded-xl h-64 animate-pulse"></div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {sortedProducts.map((product) => (
+                                <motion.div
+                                    key={product.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-transform duration-300"
+                                >
+                                    <div className="relative h-64 w-full overflow-hidden bg-gray-50">
+                                        {product.imageSrc ? (
+                                            <img
+                                                src={product.imageSrc}
+                                                alt={product.name}
+                                                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center">
+                                                <span className="text-gray-400">No image</span>
+                                            </div>
+                                        )}
+                                        {product.featured && (
+                                            <div className="absolute top-2 right-2">
+                                                <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+                                                    <Star className="w-3 h-3 fill-current" />
+                                                    <span className="text-xs font-bold">BEST</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                    <div className="p-8">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-6 group-hover:text-green-600 transition-colors duration-200">
+                                            {product.name}
+                                        </h3>
+                                        <button
+                                            onClick={() => router.push(`/${locale}/products/${product.id}`)}
+                                            className="w-full px-4 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                                        >
+                                            <ShoppingCart size={20} />
+                                            {t.common.buttons.buyNow}
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
-            {/* Product Quality Section */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <SectionHeader
                         overline={t.common.sections.healthLifestyle}
@@ -186,7 +180,6 @@ export default function ProductsPage({ params: { locale } }: { params: { locale:
                 </div>
             </section>
 
-            {/* Call to Action */}
             <CallToAction
                 title={t.home.cta.title}
                 subtitle={t.home.cta.subtitle}

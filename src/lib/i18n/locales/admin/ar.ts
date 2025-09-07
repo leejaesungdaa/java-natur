@@ -1,0 +1,212 @@
+export const adminTranslationsAr = {
+    auth: {
+        login: {
+            title: 'وصول المشرف',
+            subtitle: 'بوابة إدارية آمنة',
+            username: 'اسم المستخدم',
+            password: 'كلمة المرور',
+            confirmPassword: 'تأكيد كلمة المرور',
+            fullName: 'الاسم الكامل',
+            email: 'عنوان البريد الإلكتروني',
+            emailRecovery: '(للاستعادة)',
+            signIn: 'تسجيل الدخول',
+            signUp: 'إنشاء حساب',
+            authenticating: 'جاري المصادقة...',
+            creatingAccount: 'جاري إنشاء الحساب...',
+            dontHaveAccount: 'ليس لديك حساب؟',
+            alreadyHaveAccount: 'هل لديك حساب بالفعل؟',
+            register: 'تسجيل',
+            returnToWebsite: 'العودة إلى الموقع',
+            rememberMe: 'تذكر اسم المستخدم',
+            errors: {
+                invalidCredentials: 'اسم المستخدم أو كلمة المرور غير صحيحة',
+                userNotFound: 'المستخدم غير موجود',
+                wrongPassword: 'كلمة مرور غير صحيحة',
+                invalidEmail: 'تنسيق البريد الإلكتروني غير صحيح',
+                authFailed: 'فشلت المصادقة',
+                tooManyAttempts: 'محاولات كثيرة جداً. حاول مرة أخرى لاحقاً',
+                usernameExists: 'اسم المستخدم موجود بالفعل',
+                emailExists: 'البريد الإلكتروني مسجل بالفعل',
+                weakPassword: 'كلمة المرور ضعيفة جداً',
+                passwordMismatch: 'كلمات المرور غير متطابقة',
+                usernameRequired: 'الرجاء إدخال اسم المستخدم',
+                passwordRequired: 'الرجاء إدخال كلمة المرور',
+                accountPending: 'حسابك في انتظار الموافقة. يرجى الانتظار حتى موافقة المسؤول.',
+                accountBlocked: 'تم حظر حسابك. يرجى الاتصال بالمسؤول.'
+            },
+            validation: {
+                usernameRequired: 'اسم المستخدم مطلوب',
+                usernameLength: 'يجب أن يكون اسم المستخدم بين 4-20 حرفاً',
+                usernameFormat: 'الأحرف والأرقام والشرطة السفلية فقط مسموحة',
+                usernameMustContain: 'يجب أن يحتوي اسم المستخدم على أحرف وأرقام',
+                usernameNoKorean: 'الأحرف الكورية غير مسموحة',
+                passwordRequired: 'كلمة المرور مطلوبة',
+                passwordMinLength: 'يجب أن تكون كلمة المرور 6 أحرف على الأقل',
+                passwordMustContainLetter: 'يجب أن تحتوي كلمة المرور على أحرف',
+                passwordMustContainSpecial: 'يجب أن تحتوي كلمة المرور على رموز خاصة',
+                emailRequired: 'البريد الإلكتروني الصالح مطلوب للنظام',
+                usernamePlaceholder: 'admin123 (أحرف وأرقام مطلوبة)',
+                passwordPlaceholder: '6 أحرف على الأقل مع رموز خاصة',
+                usernameHint: 'يجب أن يحتوي على أحرف وأرقام',
+                passwordHint: 'يجب أن يحتوي على أحرف ورموز خاصة (!@#$%^&*)',
+                nameRequired: 'الاسم مطلوب',
+                nameLength: 'يجب أن يكون الاسم بين 2-50 حرفاً',
+                nameInvalidKorean: 'تم اكتشاف أحرف كورية غير صالحة',
+                nameNoSpecialChars: 'الرموز الخاصة غير مسموحة في الاسم',
+                nameNoNumbers: 'الأرقام غير مسموحة في الاسم',
+                nameInvalidFormat: 'يمكن أن يحتوي الاسم على أحرف إنجليزية وكورية ومسافات فقط'
+            }
+        },
+        register: {
+            title: 'تسجيل المشرف',
+            subtitle: 'إنشاء حساب مشرف جديد',
+            fullName: 'الاسم الكامل',
+            username: 'اسم المستخدم',
+            password: 'كلمة المرور',
+            confirmPassword: 'تأكيد كلمة المرور',
+            createAccount: 'إنشاء حساب',
+            creatingAccount: 'جاري إنشاء الحساب...',
+            haveAccount: 'هل لديك حساب بالفعل؟',
+            signIn: 'تسجيل الدخول',
+            returnToWebsite: 'العودة إلى الموقع',
+            successMessage: 'تم إرسال طلب التسجيل.',
+            errors: {
+                usernameRequired: 'الرجاء إدخال اسم المستخدم',
+                nameRequired: 'الرجاء إدخال الاسم',
+                passwordRequired: 'الرجاء إدخال كلمة المرور',
+                confirmPasswordRequired: 'يرجى تأكيد كلمة المرور',
+                passwordMismatch: 'كلمات المرور غير متطابقة',
+                usernameExists: 'اسم المستخدم موجود بالفعل',
+                authFailed: 'فشل التسجيل',
+                nameInvalid: 'تنسيق الاسم غير صالح',
+                usernameInvalid: 'تنسيق اسم المستخدم غير صالح',
+                passwordInvalid: 'تنسيق كلمة المرور غير صالح'
+            }
+        }
+    },
+    dashboard: {
+        title: 'لوحة القيادة',
+        welcome: 'مرحباً بعودتك',
+        stats: {
+            totalVisitors: 'إجمالي الزوار',
+            pageViews: 'مشاهدات الصفحة',
+            products: 'المنتجات',
+            inquiries: 'الاستفسارات'
+        },
+        charts: {
+            visitorAnalytics: 'تحليلات الزوار',
+            deviceDistribution: 'توزيع الأجهزة',
+            recentActivities: 'الأنشطة الأخيرة'
+        },
+        activities: {
+            newInquiry: 'تم استلام استفسار جديد',
+            productUpdated: 'تم تحديث المنتج',
+            imageUploaded: 'تم تحميل صورة جديدة إلى المعرض',
+            settingsUpdated: 'تم تحديث إعدادات الموقع',
+            reportGenerated: 'تم إنشاء تقرير التحليلات',
+            timeAgo: {
+                minutes: 'دقائق مضت',
+                hours: 'ساعات مضت',
+                days: 'أيام مضت'
+            }
+        }
+    },
+    navigation: {
+        dashboard: 'لوحة القيادة',
+        products: 'المنتجات',
+        media: 'الوسائط',
+        settings: 'الإعدادات',
+        logout: 'تسجيل الخروج'
+    },
+    media: {
+        title: 'معرض الوسائط',
+        subtitle: 'إدارة الصور والفيديو والمستندات',
+        search: 'البحث في الملفات...',
+        filter: {
+            all: 'جميع الملفات',
+            images: 'الصور',
+            videos: 'الفيديوهات',
+            documents: 'المستندات'
+        },
+        upload: {
+            dragDrop: 'اسحب واسقط الملفات هنا',
+            dragDropActive: 'اسقط الملفات هنا',
+            clickBrowse: 'أو انقر للتصفح',
+            formats: 'الأشكال المدعومة: JPG, PNG, GIF, MP4, PDF (بحد أقصى 50 ميجا)',
+            uploading: 'جاري الرفع...'
+        },
+        bulkDelete: 'حذف',
+        confirmDelete: 'هل أنت متأكد من حذف هذا الملف؟',
+        confirmBulkDelete: 'حذف {count} ملفات مُحددة؟',
+        table: {
+            name: 'الاسم',
+            type: 'النوع',
+            size: 'الحجم',
+            uploaded: 'تم الرفع',
+            actions: 'الإجراءات'
+        },
+        preview: {
+            notAvailable: 'المعاينة غير متوفرة'
+        },
+        toast: {
+            uploadSuccess: 'تم رفع {filename} بنجاح',
+            uploadFailed: 'فشل في رفع {filename}',
+            deleteSuccess: 'تم حذف الملف بنجاح',
+            bulkDeleteSuccess: 'تم حذف الملفات بنجاح',
+            deleteFailed: 'فشل في حذف الملف'
+        }
+    },
+    website: {
+        subtitle: 'إدارة محتوى ومعلومات الموقع',
+        noPermission: 'ليس لديك إذن للوصول إلى هذه الصفحة',
+        companyHistory: 'تاريخ الشركة',
+        contactInfo: 'معلومات الاتصال',
+        vinegarInfo: 'معلومات الخل',
+        vinegarStory: 'قصص الخل',
+        vinegarVideos: 'فيديوهات الخل',
+        vinegarProcess: 'عملية التصنيع',
+        featuredProducts: 'المنتجات المميزة',
+        allProducts: 'جميع المنتجات',
+        products: 'المنتجات',
+        addNew: 'إضافة جديد',
+        save: 'حفظ',
+        saving: 'جارٍ الحفظ...',
+        year: 'السنة',
+        month: 'الشهر',
+        order: 'الترتيب',
+        description: 'الوصف',
+        address: 'العنوان',
+        addressEnglish: 'العنوان (بالإنجليزية)',
+        phone: 'الهاتف',
+        email: 'البريد الإلكتروني',
+        latitude: 'خط العرض',
+        longitude: 'خط الطول',
+        vinegarType: 'نوع الخل',
+        title: 'العنوان',
+        benefits: 'الفوائد',
+        addBenefit: 'إضافة فائدة',
+        imageUrl: 'رابط الصورة',
+        videoUrl: 'رابط الفيديو',
+        thumbnailUrl: 'رابط الصورة المصغرة',
+        step: 'خطوة',
+        productName: 'اسم المنتج',
+        productLink: 'رابط المنتج',
+        featured: 'مميز',
+        content: 'المحتوى',
+        summary: 'ملخص',
+        createdAt: 'تاريخ الإنشاء',
+        loadError: 'فشل تحميل البيانات',
+        saveSuccess: 'تم الحفظ بنجاح',
+        saveError: 'فشل في الحفظ',
+        orderDuplicate: 'رقم الترتيب هذا مستخدم بالفعل. يرجى اختيار رقم آخر.',
+        allFieldsRequired: 'يرجى ملء جميع الحقول',
+        deleteSuccess: 'تم الحذف بنجاح',
+        deleteError: 'فشل في الحذف',
+        confirmDelete: 'هل أنت متأكد من حذف هذا العنصر؟',
+        comingSoon: 'قريباً...',
+        createdBy: 'أنشأها',
+        updatedBy: 'عدلها',
+        deletedBy: 'حذفها',
+        at: 'في'
+    }
+} as const;

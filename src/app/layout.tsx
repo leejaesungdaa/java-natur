@@ -56,6 +56,8 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+import ClientLayout from '@/components/admin/ClientLayout';
+
 export default function RootLayout({
   children,
 }: {
@@ -64,7 +66,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${montserrat.variable}`}>
       <body className="font-sans bg-white text-gray-900 antialiased">
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

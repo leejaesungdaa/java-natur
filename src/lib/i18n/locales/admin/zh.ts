@@ -1,0 +1,212 @@
+export const adminTranslationsZh = {
+    auth: {
+        login: {
+            title: '管理员访问',
+            subtitle: '安全管理门户',
+            username: '用户名',
+            password: '密码',
+            confirmPassword: '确认密码',
+            fullName: '全名',
+            email: '电子邮箱',
+            emailRecovery: '(用于恢复)',
+            signIn: '登录',
+            signUp: '创建账户',
+            authenticating: '验证中...',
+            creatingAccount: '创建账户中...',
+            dontHaveAccount: '没有账户？',
+            alreadyHaveAccount: '已有账户？',
+            register: '注册',
+            returnToWebsite: '返回网站',
+            rememberMe: '记住用户名',
+            errors: {
+                invalidCredentials: '用户名或密码无效',
+                userNotFound: '找不到用户',
+                wrongPassword: '密码错误',
+                invalidEmail: '邮箱格式无效',
+                authFailed: '认证失败',
+                tooManyAttempts: '尝试次数过多。请稍后再试',
+                usernameExists: '用户名已存在',
+                emailExists: '邮箱已注册',
+                weakPassword: '密码太弱',
+                passwordMismatch: '密码不匹配',
+                usernameRequired: '请输入用户名',
+                passwordRequired: '请输入密码',
+                accountPending: '您的账户正在等待批准。请等待管理员批准。',
+                accountBlocked: '您的账户已被封锁。请联系管理员。'
+            },
+            validation: {
+                usernameRequired: '用户名是必需的',
+                usernameLength: '用户名必须是4-20个字符',
+                usernameFormat: '只允许字母、数字和下划线',
+                usernameMustContain: '用户名必须包含字母和数字',
+                usernameNoKorean: '不允许使用韩文字符',
+                passwordRequired: '密码是必需的',
+                passwordMinLength: '密码至少6个字符',
+                passwordMustContainLetter: '密码必须包含字母',
+                passwordMustContainSpecial: '密码必须包含特殊字符',
+                emailRequired: '系统需要有效的电子邮件',
+                usernamePlaceholder: 'admin123（需要字母和数字）',
+                passwordPlaceholder: '至少6个字符，包含特殊字符',
+                usernameHint: '必须包含字母和数字',
+                passwordHint: '必须包含字母和特殊字符（!@#$%^&*）',
+                nameRequired: '姓名是必需的',
+                nameLength: '姓名必须是2-50个字符',
+                nameInvalidKorean: '检测到无效的韩文字符',
+                nameNoSpecialChars: '姓名中不允许特殊字符',
+                nameNoNumbers: '姓名中不允许数字',
+                nameInvalidFormat: '姓名只能包含英文、韩文字符和空格'
+            }
+        },
+        register: {
+            title: '管理员注册',
+            subtitle: '创建新管理员账户',
+            fullName: '全名',
+            username: '用户名',
+            password: '密码',
+            confirmPassword: '确认密码',
+            createAccount: '创建账户',
+            creatingAccount: '正在创建账户...',
+            haveAccount: '已有账户？',
+            signIn: '登录',
+            returnToWebsite: '返回网站',
+            successMessage: '注册请求已提交。',
+            errors: {
+                usernameRequired: '请输入用户名',
+                nameRequired: '请输入姓名',
+                passwordRequired: '请输入密码',
+                confirmPasswordRequired: '请确认密码',
+                passwordMismatch: '密码不匹配',
+                usernameExists: '用户名已存在',
+                authFailed: '注册失败',
+                nameInvalid: '姓名格式无效',
+                usernameInvalid: '用户名格式无效',
+                passwordInvalid: '密码格式无效'
+            }
+        }
+    },
+    dashboard: {
+        title: '仪表板',
+        welcome: '欢迎回来',
+        stats: {
+            totalVisitors: '总访客数',
+            pageViews: '页面浏览量',
+            products: '产品',
+            inquiries: '询问'
+        },
+        charts: {
+            visitorAnalytics: '访客分析',
+            deviceDistribution: '设备分布',
+            recentActivities: '最近活动'
+        },
+        activities: {
+            newInquiry: '收到新的询问',
+            productUpdated: '产品已更新',
+            imageUploaded: '新图片已上传到画廊',
+            settingsUpdated: '站点设置已更新',
+            reportGenerated: '分析报告已生成',
+            timeAgo: {
+                minutes: '分钟前',
+                hours: '小时前',
+                days: '天前'
+            }
+        }
+    },
+    navigation: {
+        dashboard: '仪表板',
+        products: '产品',
+        media: '媒体',
+        settings: '设置',
+        logout: '登出'
+    },
+    media: {
+        title: '媒体库',
+        subtitle: '管理图片、视频和文档',
+        search: '搜索文件...',
+        filter: {
+            all: '所有文件',
+            images: '图片',
+            videos: '视频',
+            documents: '文档'
+        },
+        upload: {
+            dragDrop: '将文件拖放到这里',
+            dragDropActive: '在这里放置文件',
+            clickBrowse: '或点击浏览',
+            formats: '支持格式：JPG, PNG, GIF, MP4, PDF（最大50MB）',
+            uploading: '上传中...'
+        },
+        bulkDelete: '删除',
+        confirmDelete: '确定要删除此文件吗？',
+        confirmBulkDelete: '删除{count}个选定的文件？',
+        table: {
+            name: '名称',
+            type: '类型',
+            size: '大小',
+            uploaded: '已上传',
+            actions: '操作'
+        },
+        preview: {
+            notAvailable: '预览不可用'
+        },
+        toast: {
+            uploadSuccess: '{filename}上传成功',
+            uploadFailed: '{filename}上传失败',
+            deleteSuccess: '文件删除成功',
+            bulkDeleteSuccess: '文件已删除',
+            deleteFailed: '文件删除失败'
+        }
+    },
+    website: {
+        subtitle: '管理网站内容和信息',
+        noPermission: '您没有访问此页面的权限',
+        companyHistory: '公司历史',
+        contactInfo: '联系信息',
+        vinegarInfo: '醋信息',
+        vinegarStory: '醋的故事',
+        vinegarVideos: '醋视频',
+        vinegarProcess: '制造工艺',
+        featuredProducts: '特色产品',
+        allProducts: '所有产品',
+        products: '产品',
+        addNew: '添加新',
+        save: '保存',
+        saving: '保存中...',
+        year: '年份',
+        month: '月份',
+        order: '顺序',
+        description: '描述',
+        address: '地址',
+        addressEnglish: '地址（英文）',
+        phone: '电话',
+        email: '电子邮件',
+        latitude: '纬度',
+        longitude: '经度',
+        vinegarType: '醋类型',
+        title: '标题',
+        benefits: '功效',
+        addBenefit: '添加功效',
+        imageUrl: '图片URL',
+        videoUrl: '视频URL',
+        thumbnailUrl: '缩略图URL',
+        step: '步骤',
+        productName: '产品名称',
+        productLink: '产品链接',
+        featured: '特色',
+        content: '内容',
+        summary: '摘要',
+        createdAt: '创建时间',
+        loadError: '加载数据失败',
+        saveSuccess: '保存成功',
+        saveError: '保存失败',
+        orderDuplicate: '此顺序号已被使用。请选择其他号码。',
+        allFieldsRequired: '请填写所有字段',
+        deleteSuccess: '删除成功',
+        deleteError: '删除失败',
+        confirmDelete: '您确定要删除此项目吗？',
+        comingSoon: '即将推出...',
+        createdBy: '创建者',
+        updatedBy: '更新者',
+        deletedBy: '删除者',
+        at: '于'
+    }
+} as const;

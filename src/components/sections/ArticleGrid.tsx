@@ -12,6 +12,7 @@ interface Article {
     imageSrc: string;
     date: string;
     category: string;
+    rawCategory?: string;
 }
 
 interface ArticleGridProps {
@@ -49,11 +50,12 @@ export default function ArticleGrid({
                 >
                     <Card
                         title={article.title}
-                        description={article.excerpt}
+                        description=""
                         imageSrc={article.imageSrc}
                         imageAlt={article.title}
                         href={`/${locale}/vinegar-story/${article.id}`}
                         tags={[article.category]}
+                        tagCategories={article.rawCategory ? [article.rawCategory] : []}
                         date={article.date}
                         locale={locale}
                         elevation="md"

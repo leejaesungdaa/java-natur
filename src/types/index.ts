@@ -6,15 +6,19 @@ export interface Product {
     imageSrc: string;
     featured: boolean;
     price?: string;
-    ingredients?: string[];
-    details?: {
-        longDescription?: string;
-        features?: string[];
-        benefits?: string[];
-        usage?: string;
-    };
+    tagline?: string;
+    longDescription?: string;
+    features?: string[];
+    benefits?: string[];
     images?: string[];
     relatedProducts?: string[];
+}
+
+export interface Store {
+    name: string;
+    url: string;
+    logo?: string;
+    featured?: boolean;
 }
 
 export interface Article {
@@ -61,11 +65,4 @@ export interface SocialLink {
     name: string;
     icon: string;
     url: string;
-}
-
-export interface Store {
-    name: string;
-    url: string;
-    logo?: string;
-    featured?: boolean;
 }

@@ -18,6 +18,7 @@ interface CardProps {
     children?: React.ReactNode;
     imagePriority?: boolean;
     tags?: string[];
+    tagCategories?: string[];
     badge?: string;
     badgeColor?: 'green' | 'blue' | 'red' | 'purple' | 'yellow' | 'gray';
     hoverEffect?: boolean;
@@ -39,6 +40,7 @@ export default function Card({
     children,
     imagePriority = false,
     tags = [],
+    tagCategories = [],
     badge,
     badgeColor = 'green',
     hoverEffect = true,
@@ -107,11 +109,23 @@ export default function Card({
             <div className="p-6">
                 {tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-3">
-                        {tags.map((tag, index) => (
-                            <span key={index} className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
-                                {tag}
-                            </span>
-                        ))}
+                        {tags.map((tag, index) => {
+                            // Get category color based on raw category type
+                            const rawCategory = tagCategories[index] || tag;
+                            const getCategoryColor = (category: string) => {
+                                if (category === 'health') return 'bg-emerald-100 text-emerald-700';
+                                if (category === 'recipe') return 'bg-amber-100 text-amber-700';
+                                if (category === 'history') return 'bg-purple-100 text-purple-700';
+                                if (category === 'tips') return 'bg-blue-100 text-blue-700';
+                                return 'bg-gray-100 text-gray-600';
+                            };
+                            
+                            return (
+                                <span key={index} className={`inline-block text-xs px-2 py-1 rounded-full font-medium ${getCategoryColor(rawCategory)}`}>
+                                    {tag}
+                                </span>
+                            );
+                        })}
                     </div>
                 )}
 

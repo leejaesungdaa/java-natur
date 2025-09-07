@@ -3,30 +3,82 @@
 import { motion } from 'framer-motion';
 import { useAnimation, getAnimationVariant } from '@/hooks/useAnimation';
 import { Locale, getTranslation } from '@/lib/i18n/config';
+import { useState, useEffect } from 'react';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { db } from '@/lib/firebase/firebaseConfig';
 
 interface HistoryEvent {
     year: string;
+    month?: string;
     title: string;
     description: string;
+    order?: number;
 }
 
 interface CompanyHistoryProps {
     locale: Locale;
-    historyEvents: HistoryEvent[];
+    historyEvents?: HistoryEvent[];
     title?: string;
     subtitle?: string;
     bgColor?: 'white' | 'gray';
+    useFirebase?: boolean;
 }
 
 export default function CompanyHistory({
     locale,
-    historyEvents,
+    historyEvents: defaultEvents = [],
     title,
     subtitle,
-    bgColor = 'white'
+    bgColor = 'white',
+    useFirebase = true
 }: CompanyHistoryProps) {
     const t = getTranslation(locale);
     const [ref, isVisible] = useAnimation({ threshold: 0.1 });
+    const [historyEvents, setHistoryEvents] = useState<HistoryEvent[]>(defaultEvents);
+    const [loading, setLoading] = useState(useFirebase);
+
+    useEffect(() => {
+        if (useFirebase) {
+            loadHistoryFromFirebase();
+        }
+    }, [useFirebase]);
+
+    const loadHistoryFromFirebase = async () => {
+        try {
+            const q = query(collection(db, 'company_history'), orderBy('order', 'asc'));
+            const querySnapshot = await getDocs(q);
+            
+            if (!querySnapshot.empty) {
+                const firebaseEvents: HistoryEvent[] = [];
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    // 삭제된 항목 제외
+                    if (!data.isDeleted) {
+                        const descriptionKey = `description_${locale}`;
+                        firebaseEvents.push({
+                            year: data.year || '',
+                            month: data.month || '',
+                            title: data.year + (data.month ? `.${data.month}` : ''),
+                            description: data[descriptionKey] || data.description || '',
+                            order: data.order || 0
+                        });
+                    }
+                });
+                
+                // Sort by order field only
+                firebaseEvents.sort((a, b) => (a.order || 0) - (b.order || 0));
+                
+                setHistoryEvents(firebaseEvents);
+            } else {
+                setHistoryEvents(defaultEvents);
+            }
+        } catch (error) {
+            console.error('Error loading history from Firebase:', error);
+            setHistoryEvents(defaultEvents);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const bgClass = bgColor === 'white' ? 'bg-white' : 'bg-gray-50';
 
@@ -48,6 +100,11 @@ export default function CompanyHistory({
                     </div>
                 )}
 
+                {loading ? (
+                    <div className="flex justify-center items-center py-20">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+                    </div>
+                ) : (
                 <div className="relative">
                     {/* 타임라인 중앙선 - 데스크톱 */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-green-200 hidden md:block"></div>
@@ -78,7 +135,7 @@ export default function CompanyHistory({
                                     </div>
 
                                     <h3 className="text-xl font-bold text-gray-900 mb-3 pt-4 md:pt-0">{item.title}</h3>
-                                    <p className="text-gray-600">{item.description}</p>
+                                    <p className="text-gray-600 whitespace-pre-wrap">{item.description}</p>
                                 </div>
                             </div>
 
@@ -93,6 +150,7 @@ export default function CompanyHistory({
                         </motion.div>
                     ))}
                 </div>
+                )}
             </div>
         </section>
     );

@@ -1,0 +1,212 @@
+export const adminTranslationsJa = {
+    auth: {
+        login: {
+            title: '管理者アクセス',
+            subtitle: 'セキュア管理ポータル',
+            username: 'ユーザー名',
+            password: 'パスワード',
+            confirmPassword: 'パスワード確認',
+            fullName: 'フルネーム',
+            email: 'メールアドレス',
+            emailRecovery: '（リカバリー用）',
+            signIn: 'サインイン',
+            signUp: 'アカウント作成',
+            authenticating: '認証中...',
+            creatingAccount: 'アカウント作成中...',
+            dontHaveAccount: 'アカウントをお持ちでないですか？',
+            alreadyHaveAccount: 'すでにアカウントをお持ちですか？',
+            register: '登録',
+            returnToWebsite: 'ウェブサイトに戻る',
+            rememberMe: 'ユーザー名を記憶',
+            errors: {
+                invalidCredentials: 'ユーザー名またはパスワードが無効です',
+                userNotFound: 'ユーザーが見つかりません',
+                wrongPassword: 'パスワードが間違っています',
+                invalidEmail: 'メール形式が無効です',
+                authFailed: '認証に失敗しました',
+                tooManyAttempts: '試行回数が多すぎます。後でもう一度お試しください',
+                usernameExists: 'ユーザー名はすでに存在します',
+                emailExists: 'メールはすでに登録されています',
+                weakPassword: 'パスワードが弱すぎます',
+                passwordMismatch: 'パスワードが一致しません',
+                usernameRequired: 'ユーザー名を入力してください',
+                passwordRequired: 'パスワードを入力してください',
+                accountPending: 'アカウントは承認待ちです。管理者の承認をお待ちください。',
+                accountBlocked: 'アカウントがブロックされました。管理者にお問い合わせください。'
+            },
+            validation: {
+                usernameRequired: 'ユーザー名は必須です',
+                usernameLength: 'ユーザー名は4〜20文字である必要があります',
+                usernameFormat: '文字、数字、アンダースコアのみ使用可能です',
+                usernameMustContain: 'ユーザー名には文字と数字の両方が必要です',
+                usernameNoKorean: '韓国語文字は使用できません',
+                passwordRequired: 'パスワードは必須です',
+                passwordMinLength: 'パスワードは最低6文字必要です',
+                passwordMustContainLetter: 'パスワードには文字が必要です',
+                passwordMustContainSpecial: 'パスワードには特殊文字が必要です',
+                emailRequired: 'システムには有効なメールが必要です',
+                usernamePlaceholder: 'admin123（文字と数字が必要）',
+                passwordPlaceholder: '最低6文字、特殊文字含む',
+                usernameHint: '文字と数字の両方が必要です',
+                passwordHint: '文字と特殊文字（!@#$%^&*）が必要です',
+                nameRequired: '名前は必須です',
+                nameLength: '名前は2〜50文字である必要があります',
+                nameInvalidKorean: '無効な韓国語文字が検出されました',
+                nameNoSpecialChars: '名前に特殊文字は使用できません',
+                nameNoNumbers: '名前に数字は使用できません',
+                nameInvalidFormat: '名前は英語、韓国語の文字とスペースのみ使用可能です'
+            }
+        },
+        register: {
+            title: '管理者登録',
+            subtitle: '新しい管理者アカウントを作成',
+            fullName: 'フルネーム',
+            username: 'ユーザー名',
+            password: 'パスワード',
+            confirmPassword: 'パスワードの確認',
+            createAccount: 'アカウント作成',
+            creatingAccount: 'アカウント作成中...',
+            haveAccount: 'すでにアカウントをお持ちですか？',
+            signIn: 'ログイン',
+            returnToWebsite: 'ウェブサイトに戻る',
+            successMessage: 'アカウントが正常に作成されました！',
+            errors: {
+                usernameRequired: 'ユーザー名を入力してください',
+                nameRequired: '名前を入力してください',
+                passwordRequired: 'パスワードを入力してください',
+                confirmPasswordRequired: 'パスワードを確認してください',
+                passwordMismatch: 'パスワードが一致しません',
+                usernameExists: 'ユーザー名はすでに存在します',
+                authFailed: '登録に失敗しました',
+                nameInvalid: '名前の形式が無効です',
+                usernameInvalid: 'ユーザー名の形式が無効です',
+                passwordInvalid: 'パスワードの形式が無効です'
+            }
+        }
+    },
+    dashboard: {
+        title: 'ダッシュボード',
+        welcome: 'おかえりなさい',
+        stats: {
+            totalVisitors: '総訪問者数',
+            pageViews: 'ページビュー',
+            products: '製品',
+            inquiries: 'お問い合わせ'
+        },
+        charts: {
+            visitorAnalytics: '訪問者分析',
+            deviceDistribution: 'デバイス分布',
+            recentActivities: '最近のアクティビティ'
+        },
+        activities: {
+            newInquiry: '新しいお問い合わせを受信しました',
+            productUpdated: '製品が更新されました',
+            imageUploaded: 'ギャラリーに新しい画像がアップロードされました',
+            settingsUpdated: 'サイト設定が更新されました',
+            reportGenerated: '分析レポートが生成されました',
+            timeAgo: {
+                minutes: '分前',
+                hours: '時間前',
+                days: '日前'
+            }
+        }
+    },
+    navigation: {
+        dashboard: 'ダッシュボード',
+        products: '製品',
+        media: 'メディア',
+        settings: '設定',
+        logout: 'ログアウト'
+    },
+    media: {
+        title: 'メディアギャラリー',
+        subtitle: '画像、動画、文書の管理',
+        search: 'ファイルを検索...',
+        filter: {
+            all: '全ファイル',
+            images: '画像',
+            videos: '動画',
+            documents: '文書'
+        },
+        upload: {
+            dragDrop: 'ファイルをここにドラッグ&ドロップ',
+            dragDropActive: 'ファイルをここにドロップ',
+            clickBrowse: 'またはクリックして参照',
+            formats: '対応形式: JPG, PNG, GIF, MP4, PDF (最大50MB)',
+            uploading: 'アップロード中...'
+        },
+        bulkDelete: '削除',
+        confirmDelete: 'このファイルを削除しますか？',
+        confirmBulkDelete: '{count}個の選択されたファイルを削除しますか？',
+        table: {
+            name: '名前',
+            type: '種類',
+            size: 'サイズ',
+            uploaded: 'アップロード済み',
+            actions: 'アクション'
+        },
+        preview: {
+            notAvailable: 'プレビューは利用できません'
+        },
+        toast: {
+            uploadSuccess: '{filename}のアップロードに成功しました',
+            uploadFailed: '{filename}のアップロードに失敗しました',
+            deleteSuccess: 'ファイルの削除に成功しました',
+            bulkDeleteSuccess: 'ファイルが削除されました',
+            deleteFailed: 'ファイルの削除に失敗しました'
+        }
+    },
+    website: {
+        subtitle: 'ウェブサイトのコンテンツと情報を管理',
+        noPermission: 'このページにアクセスする権限がありません',
+        companyHistory: '会社沿革',
+        contactInfo: '連絡先情報',
+        vinegarInfo: '酢の情報',
+        vinegarStory: '酢の物語',
+        vinegarVideos: '酢の動画',
+        vinegarProcess: '製造工程',
+        featuredProducts: '注目製品',
+        allProducts: 'すべての製品',
+        products: '製品',
+        addNew: '新規追加',
+        save: '保存',
+        saving: '保存中...',
+        year: '年',
+        month: '月',
+        order: '順序',
+        description: '説明',
+        address: '住所',
+        addressEnglish: '住所（英語）',
+        phone: '電話',
+        email: 'メール',
+        latitude: '緯度',
+        longitude: '経度',
+        vinegarType: '酢の種類',
+        title: 'タイトル',
+        benefits: '効能',
+        addBenefit: '効能を追加',
+        imageUrl: '画像URL',
+        videoUrl: '動画URL',
+        thumbnailUrl: 'サムネイルURL',
+        step: 'ステップ',
+        productName: '製品名',
+        productLink: '製品リンク',
+        featured: '注目',
+        content: 'コンテンツ',
+        summary: '概要',
+        createdAt: '作成日',
+        loadError: 'データの読み込みに失敗しました',
+        saveSuccess: '保存しました',
+        saveError: '保存に失敗しました',
+        orderDuplicate: 'この順序番号は既に使用されています。別の番号を選択してください。',
+        allFieldsRequired: 'すべてのフィールドを入力してください',
+        deleteSuccess: '削除しました',
+        deleteError: '削除に失敗しました',
+        confirmDelete: 'このアイテムを削除してもよろしいですか？',
+        comingSoon: '近日公開...',
+        createdBy: '作成者',
+        updatedBy: '更新者',
+        deletedBy: '削除者',
+        at: ''
+    }
+} as const;

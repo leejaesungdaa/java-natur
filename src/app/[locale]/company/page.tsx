@@ -4,7 +4,7 @@ import { Locale, getTranslation } from '@/lib/i18n/config';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useAnimation, getAnimationVariant } from '@/hooks/useAnimation';
 import HeroSection from '@/components/sections/HeroSection';
 import SectionHeader from '@/components/sections/SectionHeader';
@@ -12,6 +12,8 @@ import CallToAction from '@/components/sections/CallToAction';
 import GoogleMap from '@/components/sections/GoogleMap';
 import SugarCaneBenefitsLink from '@/components/sections/SugarCaneBenefitsLink';
 import CompanyHistory from '@/components/sections/CompanyHistory';
+import { collection, getDocs, query, limit } from 'firebase/firestore';
+import { db } from '@/lib/firebase/firebaseConfig';
 
 export default function CompanyPage({ params: { locale } }: { params: { locale: Locale } }) {
     const t = getTranslation(locale);
@@ -19,13 +21,49 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
     const [aboutRef, aboutVisible] = useAnimation({ threshold: 0.2 });
     const [storyRef, storyVisible] = useAnimation({ threshold: 0.2 });
     const [contactRef, contactVisible] = useAnimation({ threshold: 0.2 });
+    const [contactInfo, setContactInfo] = useState({
+        address: t.footer.contact.address,
+        phone: t.footer.contact.phone,
+        email: t.footer.contact.email,
+        latitude: -6.5510,
+        longitude: 107.4840
+    });
 
     const fadeIn = getAnimationVariant('fadeIn');
     const slideUp = getAnimationVariant('slideUp');
     const slideLeft = getAnimationVariant('slideLeft');
     const slideRight = getAnimationVariant('slideRight');
 
-    const historyEvents = [
+    // Firebase에서 연락처 정보 로드
+    useEffect(() => {
+        loadContactInfo();
+    }, [locale]);
+
+    const loadContactInfo = async () => {
+        try {
+            const q = query(collection(db, 'contact_info'), limit(1));
+            const querySnapshot = await getDocs(q);
+            
+            if (!querySnapshot.empty) {
+                const doc = querySnapshot.docs[0];
+                const data = doc.data();
+                const addressKey = locale === 'en' ? 'addressEnglish' : 'address';
+                
+                setContactInfo({
+                    address: data[addressKey] || data.address || t.footer.contact.address,
+                    phone: data.phone || t.footer.contact.phone,
+                    email: data.email || t.footer.contact.email,
+                    latitude: data.latitude || -6.5510,
+                    longitude: data.longitude || 107.4840
+                });
+            }
+        } catch (error) {
+            console.error('Error loading contact info:', error);
+        }
+    };
+
+    // 기본 히스토리 이벤트 (Firebase에 데이터가 없을 경우 사용)
+    const defaultHistoryEvents = [
         {
             year: "2016",
             title: t.company.history.events.dev2016,
@@ -185,10 +223,11 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
 
             <CompanyHistory
                 locale={locale}
-                historyEvents={historyEvents}
+                historyEvents={defaultHistoryEvents}
                 title={t.company.history.title}
                 subtitle={t.company.history.subtitle}
                 bgColor="white"
+                useFirebase={true}
             />
 
             <section id="contact" className="py-24 bg-gray-50" ref={contactRef}>
@@ -216,7 +255,7 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                                     <div>
                                         <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.company.contact.address}</h3>
                                         <p className="text-gray-600">
-                                            {t.footer.contact.address}
+                                            {contactInfo.address}
                                         </p>
                                     </div>
                                 </div>
@@ -229,7 +268,7 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.company.contact.phone}</h3>
-                                        <p className="text-gray-600">{t.footer.contact.phone}</p>
+                                        <p className="text-gray-600">{contactInfo.phone}</p>
                                     </div>
                                 </div>
 
@@ -241,7 +280,7 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-semibold text-gray-900 mb-2">{t.company.contact.email}</h3>
-                                        <p className="text-gray-600">{t.footer.contact.email}</p>
+                                        <p className="text-gray-600">{contactInfo.email}</p>
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +295,7 @@ export default function CompanyPage({ params: { locale } }: { params: { locale: 
                             <div className="bg-white rounded-xl shadow-md overflow-hidden">
                                 <div className="h-80 w-full relative">
                                     <iframe
-                                        src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&center=-6.5510,107.4840&zoom=15&maptype=roadmap`}
+                                        src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&center=${contactInfo.latitude},${contactInfo.longitude}&zoom=15&maptype=roadmap`}
                                         width="100%"
                                         height="100%"
                                         style={{ border: 0 }}

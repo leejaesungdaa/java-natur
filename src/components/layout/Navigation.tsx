@@ -60,23 +60,28 @@ export default function Navigation({
 
     return (
         <motion.nav
-            className={isMobile ? 'flex flex-col space-y-8 items-center' : 'flex items-center space-x-10'}
+            className={isMobile ? 'flex flex-col space-y-4 w-full' : 'flex items-center space-x-10'}
             variants={navVariants}
             initial="hidden"
             animate="visible"
         >
             {navigationItems.map((item) => (
-                <motion.div key={item.key} variants={itemVariants}>
+                <motion.div key={item.key} variants={itemVariants} className={isMobile ? 'w-full' : ''}>
                     <Link
                         href={`/${locale}${item.path}`}
                         onClick={onNavItemClick}
-                        className={`${isMobile ? 'text-xl font-medium py-3 block' : 'text-base font-medium'
-                            } transition-colors duration-200 relative ${getTextColor(isActive(item.path))}`}
+                        className={`${isMobile
+                            ? 'text-xl py-4 px-4 flex items-center w-full rounded-lg hover:bg-gray-50 transition-colors'
+                            : 'text-base font-medium'
+                            } relative ${getTextColor(isActive(item.path))}`}
                     >
                         {item.label}
-                        {isActive(item.path) && !isMobile && (
+                        {isActive(item.path) && (
                             <motion.span
-                                className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"
+                                className={`${isMobile
+                                    ? 'absolute left-0 top-0 bottom-0 w-1 rounded-r-full bg-green-600'
+                                    : 'absolute -bottom-1 left-0 w-full h-0.5 bg-green-600'
+                                    }`}
                                 layoutId="activeNavIndicator"
                                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                             />
@@ -87,7 +92,7 @@ export default function Navigation({
 
             <motion.div
                 variants={itemVariants}
-                className={isMobile ? 'pt-6 w-full max-w-xs' : ''}
+                className={isMobile ? 'pt-4 w-full' : ''}
             >
                 <LanguageSelector locale={locale} isMobile={isMobile} isTransparent={isTransparent} />
             </motion.div>

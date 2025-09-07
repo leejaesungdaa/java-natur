@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import { Locale, getTranslation } from '@/lib/i18n/config';
 import { useAnimation, getAnimationVariant } from '@/hooks/useAnimation';
+import { inquiryService } from '@/lib/firebase/services';
 
 interface ContactFormProps {
     locale: Locale;
@@ -32,11 +33,17 @@ export default function ContactForm({
         setFormState(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setFormStatus('sending');
 
-        setTimeout(() => {
+        try {
+            await inquiryService.addInquiry({
+                ...formState,
+                locale,
+                createdAt: new Date(),
+            });
+
             setFormStatus('success');
             setFormState({
                 name: '',
@@ -44,7 +51,10 @@ export default function ContactForm({
                 subject: '',
                 message: '',
             });
-        }, 1500);
+        } catch (error) {
+            console.error('Error submitting inquiry:', error);
+            setFormStatus('error');
+        }
     };
 
     return (

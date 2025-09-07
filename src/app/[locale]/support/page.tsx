@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Locale, getTranslation } from '@/lib/i18n/config';
 import { motion } from 'framer-motion';
 import HeroSection from '@/components/sections/HeroSection';
@@ -9,9 +10,11 @@ import ContactForm from '@/components/sections/ContactForm';
 import ContactDetails from '@/components/sections/ContactDetails';
 import SocialMediaBar from '@/components/sections/SocialMediaBar';
 import CallToAction from '@/components/sections/CallToAction';
+import { useContactInfo } from '@/hooks/useFirebase';
 
 export default function SupportPage({ params: { locale } }: { params: { locale: Locale } }) {
     const t = getTranslation(locale);
+    const { contactInfo } = useContactInfo(locale);
 
     const faqTopics = [
         { value: "Product Information", label: t.support.faq.topics.products },
@@ -31,7 +34,7 @@ export default function SupportPage({ params: { locale } }: { params: { locale: 
             title: t.company.contact.phone,
             content: (
                 <>
-                    <p className="text-gray-600">{t.footer.contact.phone}</p>
+                    <p className="text-gray-600">{contactInfo?.phone || t.footer.contact.phone}</p>
                     <p className="text-gray-600 mt-2">{t.support.contact.businessHours}</p>
                 </>
             )
@@ -43,12 +46,7 @@ export default function SupportPage({ params: { locale } }: { params: { locale: 
                 </svg>
             ),
             title: t.company.contact.email,
-            content: (
-                <>
-                    <p className="text-gray-600">{t.footer.contact.email}</p>
-                    <p className="text-gray-600 mt-2">support@naturjava.com</p>
-                </>
-            )
+            content: <p className="text-gray-600">{contactInfo?.email || t.footer.contact.email}</p>
         },
         {
             icon: (
@@ -58,7 +56,7 @@ export default function SupportPage({ params: { locale } }: { params: { locale: 
                 </svg>
             ),
             title: t.company.contact.address,
-            content: <p className="text-gray-600">{t.footer.contact.address}</p>
+            content: <p className="text-gray-600">{contactInfo?.address || t.footer.contact.address}</p>
         }
     ];
 

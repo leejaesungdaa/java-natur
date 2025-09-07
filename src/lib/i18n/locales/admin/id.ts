@@ -1,0 +1,212 @@
+export const adminTranslationsId = {
+    auth: {
+        login: {
+            title: 'Akses Admin',
+            subtitle: 'Portal administratif aman',
+            username: 'Nama Pengguna',
+            password: 'Kata Sandi',
+            confirmPassword: 'Konfirmasi Kata Sandi',
+            fullName: 'Nama Lengkap',
+            email: 'Alamat Email',
+            emailRecovery: '(untuk pemulihan)',
+            signIn: 'Masuk',
+            signUp: 'Buat Akun',
+            authenticating: 'Mengautentikasi...',
+            creatingAccount: 'Membuat Akun...',
+            dontHaveAccount: 'Belum punya akun?',
+            alreadyHaveAccount: 'Sudah punya akun?',
+            register: 'Daftar',
+            returnToWebsite: 'Kembali ke website',
+            rememberMe: 'Ingat nama pengguna',
+            errors: {
+                invalidCredentials: 'Nama pengguna atau kata sandi salah',
+                userNotFound: 'Pengguna tidak ditemukan',
+                wrongPassword: 'Kata sandi salah',
+                invalidEmail: 'Format email salah',
+                authFailed: 'Autentikasi gagal',
+                tooManyAttempts: 'Terlalu banyak percobaan. Silakan coba lagi nanti',
+                usernameExists: 'Nama pengguna sudah ada',
+                emailExists: 'Email sudah terdaftar',
+                weakPassword: 'Kata sandi terlalu lemah',
+                passwordMismatch: 'Kata sandi tidak cocok',
+                usernameRequired: 'Silakan masukkan nama pengguna',
+                passwordRequired: 'Silakan masukkan kata sandi',
+                accountPending: 'Akun Anda menunggu persetujuan. Silakan tunggu persetujuan admin.',
+                accountBlocked: 'Akun Anda telah diblokir. Silakan hubungi administrator.'
+            },
+            validation: {
+                usernameRequired: 'Nama pengguna diperlukan',
+                usernameLength: 'Nama pengguna harus 4-20 karakter',
+                usernameFormat: 'Hanya huruf, angka, dan garis bawah yang diperbolehkan',
+                usernameMustContain: 'Nama pengguna harus mengandung huruf dan angka',
+                usernameNoKorean: 'Karakter Korea tidak diperbolehkan',
+                passwordRequired: 'Kata sandi diperlukan',
+                passwordMinLength: 'Kata sandi minimal 6 karakter',
+                passwordMustContainLetter: 'Kata sandi harus mengandung huruf',
+                passwordMustContainSpecial: 'Kata sandi harus mengandung karakter khusus',
+                emailRequired: 'Email valid diperlukan untuk sistem',
+                usernamePlaceholder: 'admin123 (huruf & angka diperlukan)',
+                passwordPlaceholder: 'Min 6 karakter dengan karakter khusus',
+                usernameHint: 'Harus mengandung huruf dan angka',
+                passwordHint: 'Harus mengandung huruf dan karakter khusus (!@#$%^&*)',
+                nameRequired: 'Nama diperlukan',
+                nameLength: 'Nama harus 2-50 karakter',
+                nameInvalidKorean: 'Karakter Korea tidak valid terdeteksi',
+                nameNoSpecialChars: 'Karakter khusus tidak diperbolehkan dalam nama',
+                nameNoNumbers: 'Angka tidak diperbolehkan dalam nama',
+                nameInvalidFormat: 'Nama hanya boleh berisi huruf Inggris, Korea, dan spasi'
+            }
+        },
+        register: {
+            title: 'Registrasi Admin',
+            subtitle: 'Buat akun admin baru',
+            fullName: 'Nama Lengkap',
+            username: 'Nama Pengguna',
+            password: 'Kata Sandi',
+            confirmPassword: 'Konfirmasi Kata Sandi',
+            createAccount: 'Buat Akun',
+            creatingAccount: 'Membuat Akun...',
+            haveAccount: 'Sudah punya akun?',
+            signIn: 'Masuk',
+            returnToWebsite: 'Kembali ke website',
+            successMessage: 'Permintaan pendaftaran telah dikirim.',
+            errors: {
+                usernameRequired: 'Silakan masukkan nama pengguna',
+                nameRequired: 'Silakan masukkan nama',
+                passwordRequired: 'Silakan masukkan kata sandi',
+                confirmPasswordRequired: 'Silakan konfirmasi kata sandi',
+                passwordMismatch: 'Kata sandi tidak cocok',
+                usernameExists: 'Nama pengguna sudah ada',
+                authFailed: 'Registrasi gagal',
+                nameInvalid: 'Format nama tidak valid',
+                usernameInvalid: 'Format nama pengguna tidak valid',
+                passwordInvalid: 'Format kata sandi tidak valid'
+            }
+        }
+    },
+    dashboard: {
+        title: 'Dasbor',
+        welcome: 'Selamat datang kembali',
+        stats: {
+            totalVisitors: 'Total Pengunjung',
+            pageViews: 'Tampilan Halaman',
+            products: 'Produk',
+            inquiries: 'Pertanyaan'
+        },
+        charts: {
+            visitorAnalytics: 'Analitik Pengunjung',
+            deviceDistribution: 'Distribusi Perangkat',
+            recentActivities: 'Aktivitas Terbaru'
+        },
+        activities: {
+            newInquiry: 'Pertanyaan baru diterima',
+            productUpdated: 'Produk diperbarui',
+            imageUploaded: 'Gambar baru diunggah ke galeri',
+            settingsUpdated: 'Pengaturan situs diperbarui',
+            reportGenerated: 'Laporan analitik dibuat',
+            timeAgo: {
+                minutes: 'menit lalu',
+                hours: 'jam lalu',
+                days: 'hari lalu'
+            }
+        }
+    },
+    navigation: {
+        dashboard: 'Dasbor',
+        products: 'Produk',
+        media: 'Media',
+        settings: 'Pengaturan',
+        logout: 'Keluar'
+    },
+    media: {
+        title: 'Galeri Media',
+        subtitle: 'Kelola gambar, video, dan dokumen',
+        search: 'Cari file...',
+        filter: {
+            all: 'Semua File',
+            images: 'Gambar',
+            videos: 'Video',
+            documents: 'Dokumen'
+        },
+        upload: {
+            dragDrop: 'Seret & jatuhkan file di sini',
+            dragDropActive: 'Jatuhkan file di sini',
+            clickBrowse: 'atau klik untuk menelusuri',
+            formats: 'Format yang didukung: JPG, PNG, GIF, MP4, PDF (Maksimal 50MB)',
+            uploading: 'Mengunggah...'
+        },
+        bulkDelete: 'Hapus',
+        confirmDelete: 'Yakin ingin menghapus file ini?',
+        confirmBulkDelete: 'Hapus {count} file yang dipilih?',
+        table: {
+            name: 'Nama',
+            type: 'Jenis',
+            size: 'Ukuran',
+            uploaded: 'Diunggah',
+            actions: 'Tindakan'
+        },
+        preview: {
+            notAvailable: 'Pratinjau tidak tersedia'
+        },
+        toast: {
+            uploadSuccess: '{filename} berhasil diunggah',
+            uploadFailed: 'Gagal mengunggah {filename}',
+            deleteSuccess: 'File berhasil dihapus',
+            bulkDeleteSuccess: 'File berhasil dihapus',
+            deleteFailed: 'Gagal menghapus file'
+        }
+    },
+    website: {
+        subtitle: 'Kelola konten dan informasi website',
+        noPermission: 'Anda tidak memiliki izin untuk mengakses halaman ini',
+        companyHistory: 'Sejarah Perusahaan',
+        contactInfo: 'Informasi Kontak',
+        vinegarInfo: 'Informasi Cuka',
+        vinegarStory: 'Cerita Cuka',
+        vinegarVideos: 'Video Cuka',
+        vinegarProcess: 'Proses Pembuatan',
+        featuredProducts: 'Produk Unggulan',
+        allProducts: 'Semua Produk',
+        products: 'Produk',
+        addNew: 'Tambah Baru',
+        save: 'Simpan',
+        saving: 'Menyimpan...',
+        year: 'Tahun',
+        month: 'Bulan',
+        order: 'Urutan',
+        description: 'Deskripsi',
+        address: 'Alamat',
+        addressEnglish: 'Alamat (Inggris)',
+        phone: 'Telepon',
+        email: 'Email',
+        latitude: 'Lintang',
+        longitude: 'Bujur',
+        vinegarType: 'Jenis Cuka',
+        title: 'Judul',
+        benefits: 'Manfaat',
+        addBenefit: 'Tambah Manfaat',
+        imageUrl: 'URL Gambar',
+        videoUrl: 'URL Video',
+        thumbnailUrl: 'URL Thumbnail',
+        step: 'Langkah',
+        productName: 'Nama Produk',
+        productLink: 'Link Produk',
+        featured: 'Unggulan',
+        content: 'Konten',
+        summary: 'Ringkasan',
+        createdAt: 'Dibuat Pada',
+        loadError: 'Gagal memuat data',
+        saveSuccess: 'Berhasil disimpan',
+        saveError: 'Gagal menyimpan',
+        orderDuplicate: 'Nomor urutan ini sudah digunakan. Silakan pilih nomor lain.',
+        allFieldsRequired: 'Harap isi semua kolom',
+        deleteSuccess: 'Berhasil dihapus',
+        deleteError: 'Gagal menghapus',
+        confirmDelete: 'Apakah Anda yakin ingin menghapus item ini?',
+        comingSoon: 'Segera hadir...',
+        createdBy: 'Dibuat oleh',
+        updatedBy: 'Diperbarui oleh',
+        deletedBy: 'Dihapus oleh',
+        at: 'pada'
+    }
+} as const;

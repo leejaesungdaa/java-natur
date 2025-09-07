@@ -1,218 +1,261 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import Button from '@/components/ui/Button';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Locale, getTranslation } from '@/lib/i18n/config';
-import HeroSection from '@/components/sections/HeroSection';
-import SectionHeader from '@/components/sections/SectionHeader';
-import ProductDetail from '@/components/sections/ProductDetail';
-import ProductFeatures from '@/components/sections/ProductFeatures';
-import ProductBuyOptions from '@/components/sections/ProductBuyOptions';
-import ProductGrid from '@/components/sections/ProductGrid';
-import CallToAction from '@/components/sections/CallToAction';
-
-interface PageParams {
-    locale: Locale;
-    productId: string;
-}
+import { motion } from 'framer-motion';
+import { ShoppingCart, ChevronLeft, Star, Shield, Truck, Clock } from 'lucide-react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase/firebaseConfig';
 
 interface Product {
     id: string;
-    name: string;
-    tagline: string;
-    description: string;
-    longDescription: string;
-    features: string[];
-    benefits: string[];
-    images: string[];
-    relatedProducts: string[];
+    name_ko?: string;
+    name_en?: string;
+    name_id?: string;
+    name_zh?: string;
+    name_ja?: string;
+    name_ar?: string;
+    description_ko?: string;
+    description_en?: string;
+    description_id?: string;
+    description_zh?: string;
+    description_ja?: string;
+    description_ar?: string;
+    imageUrl?: string;
+    shopeeLink?: string;
+    tokopediaLink?: string;
+    featured?: boolean;
 }
 
-const products: Record<string, Product> = {
-    'apple-cider-vinegar': {
-        id: 'apple-cider-vinegar',
-        name: 'Natur Java Apple Cider Vinegar',
-        tagline: 'With the Mother - Raw & Unfiltered',
-        description: 'Our premium Apple Cider Vinegar is made from fresh, organic apples grown in the highlands of Java.',
-        longDescription: 'Natur Java Apple Cider Vinegar is crafted using traditional fermentation methods, allowing the natural development of the "mother" - a complex culture of beneficial bacteria that gives our vinegar its distinctive appearance and health properties.',
-        features: [
-            'Contains the "mother" culture of beneficial bacteria',
-            'Made from 100% organic apples',
-            'No artificial ingredients or preservatives'
-        ],
-        benefits: [
-            'Supports digestion and gut health',
-            'May help regulate blood sugar levels',
-            'Contributes to heart health'
-        ],
-        images: [
-            '/images/products/product-1.jpg',
-            '/images/products/product-2.jpg',
-            '/images/products/product-3.jpg'
-        ],
-        relatedProducts: ['rice-vinegar', 'coconut-vinegar']
-    },
-    'rice-vinegar': {
-        id: 'rice-vinegar',
-        name: 'Natur Java Rice Vinegar',
-        tagline: 'Traditional & Pure Rice Fermentation',
-        description: 'Our premium Rice Vinegar is crafted through traditional fermentation of organic rice.',
-        longDescription: 'Natur Java Rice Vinegar is produced through centuries-old techniques of fermenting organic rice.',
-        features: [
-            'Made from 100% organic Java rice',
-            'No artificial ingredients or preservatives',
-            'Naturally gluten-free'
-        ],
-        benefits: [
-            'Gentle acid profile makes it ideal for delicate dishes',
-            'Lower acidity than other vinegars',
-            'Adds depth to Asian recipes without overpowering'
-        ],
-        images: [
-            '/images/products/product-2.jpg',
-            '/images/products/product-1.jpg',
-            '/images/products/product-3.jpg'
-        ],
-        relatedProducts: ['apple-cider-vinegar', 'coconut-vinegar']
-    },
-    'coconut-vinegar': {
-        id: 'coconut-vinegar',
-        name: 'Natur Java Coconut Vinegar',
-        tagline: 'Traditional Indonesian Fermentation',
-        description: 'Our Coconut Vinegar is made from the sap of coconut blossoms.',
-        longDescription: 'Natur Java Coconut Vinegar is crafted from fresh coconut tree sap following traditional Indonesian fermentation techniques.',
-        features: [
-            'Made from 100% fresh coconut blossom sap',
-            'Contains 17 amino acids',
-            'Rich in vitamins B & C'
-        ],
-        benefits: [
-            'Supports digestive health with natural probiotics',
-            'Contains more nutrients than apple cider vinegar',
-            'Lower glycemic index than other vinegars'
-        ],
-        images: [
-            '/images/products/product-3.jpg',
-            '/images/products/product-1.jpg',
-            '/images/products/product-2.jpg'
-        ],
-        relatedProducts: ['apple-cider-vinegar', 'rice-vinegar']
-    }
-};
-
-export default function ProductDetailPage({ params }: { params: PageParams }) {
-    const { locale, productId } = params;
+export default function ProductDetailPage({ 
+    params: { locale, productId } 
+}: { 
+    params: { locale: Locale, productId: string } 
+}) {
     const t = getTranslation(locale);
+    const router = useRouter();
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [selectedImage, setSelectedImage] = useState(0);
 
-    const product = products[productId];
+    useEffect(() => {
+        loadProduct();
+    }, [productId, locale]);
 
-    if (!product) {
+    const loadProduct = async () => {
+        try {
+            const docRef = doc(db, 'products', productId);
+            const docSnap = await getDoc(docRef);
+            
+            if (docSnap.exists()) {
+                setProduct({ id: docSnap.id, ...docSnap.data() } as Product);
+            } else {
+                router.push(`/${locale}/products`);
+            }
+        } catch (error) {
+            console.error('Error loading product:', error);
+            router.push(`/${locale}/products`);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const getLocalizedField = (field: string) => {
+        if (!product) return '';
+        const fieldKey = `${field}_${locale}` as keyof Product;
+        return product[fieldKey] || product[`${field}_en` as keyof Product] || '';
+    };
+
+    if (loading) {
         return (
-            <div className="container mx-auto px-4 py-32 text-center">
-                <h1 className="text-3xl font-bold mb-4">{t.products.notFound}</h1>
-                <p className="mb-8">{t.products.notFoundDesc}</p>
-                <Link href={`/${locale}/products`}>
-                    <Button>{t.products.all}</Button>
-                </Link>
+            <div className="min-h-screen pt-20 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
             </div>
         );
     }
 
-    const relatedProductsData = product.relatedProducts.map(id => products[id]);
+    if (!product) {
+        return null;
+    }
 
-    const storeOptions = [
-        { name: t.products.storeOptions.official, url: "#" },
-        { name: t.products.storeOptions.marketplace1, url: "#" },
-        { name: t.products.storeOptions.marketplace2, url: "#" }
+    const features = [
+        {
+            icon: <Shield className="w-5 h-5" />,
+            title: locale === 'ko' ? '100% 천연' : locale === 'id' ? '100% Alami' : '100% Natural',
+            subtitle: locale === 'ko' ? '천연 발효 공정' : locale === 'id' ? 'Proses fermentasi alami' : 'Natural fermentation process'
+        },
+        {
+            icon: <Truck className="w-5 h-5" />,
+            title: locale === 'ko' ? '안전한 배송' : locale === 'id' ? 'Pengiriman Aman' : 'Safe Delivery',
+            subtitle: locale === 'ko' ? '안전하게 포장하여 배송' : locale === 'id' ? 'Dikemas dengan aman' : 'Safely packaged delivery'
+        },
+        {
+            icon: <Clock className="w-5 h-5" />,
+            title: locale === 'ko' ? '365일 상담' : locale === 'id' ? 'Konsultasi 365 Hari' : '365 Days Support',
+            subtitle: locale === 'ko' ? '언제든 문의 가능' : locale === 'id' ? 'Hubungi kapan saja' : 'Contact anytime'
+        }
     ];
 
     return (
-        <div className="bg-white">
-            {/* 제품 소개 섹션 */}
-            <div className="pt-16">
-                <div className="container mx-auto px-4 py-12">
-                    <ProductDetail
-                        locale={locale}
-                        product={product}
-                    />
-                </div>
-            </div>
-
-            {/* 제품 설명 섹션 */}
-            <div className="bg-gray-50">
-                <div className="container mx-auto px-4 py-16">
-                    <div className="max-w-3xl mx-auto">
-                        <SectionHeader
-                            title={t.products.aboutProduct.replace('{productName}', product.name)}
-                            alignment="left"
-                        />
-                        <p className="text-lg text-gray-700 mb-8">{product.longDescription}</p>
-
-                        <div className="bg-white p-6 rounded-xl shadow-sm mb-8">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">{t.products.usage.title}</h3>
-                            <p className="text-gray-700">{t.products.usage.description}</p>
-                        </div>
+        <div className="min-h-screen pt-20 bg-gray-50">
+            {/* Breadcrumb */}
+            <div className="bg-white border-b">
+                <div className="container mx-auto px-4 py-4">
+                    <div className="flex items-center gap-2 text-sm">
+                        <button 
+                            onClick={() => router.push(`/${locale}/products`)}
+                            className="text-gray-500 hover:text-gray-700 flex items-center gap-1"
+                        >
+                            <ChevronLeft size={16} />
+                            {t.products.all}
+                        </button>
+                        <span className="text-gray-400">/</span>
+                        <span className="text-gray-900 font-medium">{getLocalizedField('name')}</span>
                     </div>
                 </div>
             </div>
 
-            {/* 특징 및 효능 섹션 */}
-            <div id="features" className="bg-white">
-                <div className="container mx-auto px-4 py-16">
-                    <ProductFeatures
-                        locale={locale}
-                        features={product.features}
-                        benefits={product.benefits}
-                    />
+            {/* Product Detail */}
+            <div className="container mx-auto px-4 py-12">
+                <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                        {/* Image Gallery */}
+                        <div className="p-8 lg:p-12 bg-gray-50">
+                            <div className="relative">
+                                {product.featured && (
+                                    <div className="absolute top-4 left-4 z-10">
+                                        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                                            <Star className="w-4 h-4 fill-current" />
+                                            <span className="font-bold text-sm">BEST SELLER</span>
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="aspect-square bg-white rounded-2xl overflow-hidden shadow-inner">
+                                    <img
+                                        src={product.imageUrl || '/images/placeholder.jpg'}
+                                        alt={getLocalizedField('name')}
+                                        className="w-full h-full object-contain p-8"
+                                    />
+                                </div>
+                                
+                                {/* Features - Under Image */}
+                                <div className="grid grid-cols-3 gap-3 mt-6">
+                                    {features.map((feature, index) => (
+                                        <div key={index} className="text-center p-3 bg-white rounded-lg border border-gray-100">
+                                            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mx-auto mb-2">
+                                                {feature.icon}
+                                            </div>
+                                            <h3 className="font-semibold text-gray-900 text-sm">{feature.title}</h3>
+                                            <p className="text-xs text-gray-600 mt-1">{feature.subtitle}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Product Info */}
+                        <div className="p-8 lg:p-12">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                {/* Product Name */}
+                                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                                    {getLocalizedField('name')}
+                                </h1>
+
+                                {/* Purchase Options - Moved Up */}
+                                <div className="space-y-4 mb-8 p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100">
+                                    <h3 className="text-lg font-semibold text-gray-900">
+                                        {locale === 'ko' ? '구매 옵션' : 
+                                         locale === 'id' ? 'Opsi Pembelian' : 
+                                         'Purchase Options'}
+                                    </h3>
+                                    
+                                    {product.shopeeLink && (
+                                        <a
+                                            href={product.shopeeLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block w-full p-5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-[1.02] shadow-lg"
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                                                        <ShoppingCart className="w-7 h-7 text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-white text-lg">Shopee</p>
+                                                        <p className="text-sm text-white/90">
+                                                            {locale === 'ko' ? '공식 스토어' : 
+                                                             locale === 'id' ? 'Toko Resmi' : 
+                                                             'Official Store'}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur rounded-lg">
+                                                    <span className="text-white font-bold">
+                                                        {locale === 'ko' ? '구매하기' : 
+                                                         locale === 'id' ? 'Beli Sekarang' : 
+                                                         'Buy Now'}
+                                                    </span>
+                                                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )}
+
+                                    {product.tokopediaLink && (
+                                        <a
+                                            href={product.tokopediaLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block w-full p-5 bg-gradient-to-r from-green-500 to-green-600 rounded-xl hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-[1.02] shadow-lg"
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                                                        <ShoppingCart className="w-7 h-7 text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-white text-lg">Tokopedia</p>
+                                                        <p className="text-sm text-white/90">
+                                                            {locale === 'ko' ? '공식 스토어' : 
+                                                             locale === 'id' ? 'Toko Resmi' : 
+                                                             'Official Store'}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur rounded-lg">
+                                                    <span className="text-white font-bold">
+                                                        {locale === 'ko' ? '구매하기' : 
+                                                         locale === 'id' ? 'Beli Sekarang' : 
+                                                         'Buy Now'}
+                                                    </span>
+                                                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )}
+                                </div>
+
+                                {/* Description */}
+                                <div className="prose prose-lg">
+                                    <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                                        {getLocalizedField('description')}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            {/* 구매 섹션 */}
-            <div id="buy" className="bg-green-50">
-                <div className="container mx-auto px-4 py-16">
-                    <SectionHeader
-                        title={t.products.where.title}
-                        subtitle={t.products.where.description}
-                    />
-
-                    <ProductBuyOptions
-                        locale={locale}
-                        stores={storeOptions}
-                    />
-                </div>
-            </div>
-
-            {/* 관련 제품 섹션 */}
-            <div className="bg-white">
-                <div className="container mx-auto px-4 py-16">
-                    <SectionHeader
-                        title={t.products.relatedProducts}
-                        subtitle={t.products.relatedProductsDesc}
-                    />
-
-                    <ProductGrid
-                        locale={locale}
-                        products={relatedProductsData.map(p => ({
-                            id: p.id,
-                            name: p.name,
-                            description: p.description,
-                            imageSrc: p.images[0]
-                        }))}
-                        columns={3}
-                    />
-                </div>
-            </div>
-
-            {/* CTA 섹션 */}
-            <CallToAction
-                title={t.products.learnMore.title}
-                subtitle={t.products.learnMore.description}
-                primaryButtonText={t.vinegarStory.info.title}
-                primaryButtonHref={`/${locale}/vinegar-story`}
-                style="dark"
-            />
         </div>
     );
-
 }

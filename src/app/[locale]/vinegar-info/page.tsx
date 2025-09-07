@@ -8,9 +8,11 @@ import { useAnimation, getAnimationVariant } from '@/hooks/useAnimation';
 import HeroSection from '@/components/sections/HeroSection';
 import SectionHeader from '@/components/sections/SectionHeader';
 import CallToAction from '@/components/sections/CallToAction';
+import { useVinegarInfo } from '@/hooks/useFirebase';
 
 export default function VinegarInfoPage({ params: { locale } }: { params: { locale: Locale } }) {
     const t = getTranslation(locale);
+    const { vinegarInfo, loading: vinegarLoading } = useVinegarInfo(locale);
 
     const [classificationRef, classificationVisible] = useAnimation({ threshold: 0.2 });
     const [benefitsRef, benefitsVisible] = useAnimation({ threshold: 0.2 });
@@ -241,31 +243,142 @@ export default function VinegarInfoPage({ params: { locale } }: { params: { loca
                         subtitle={t.vinegarInfo.productDifferences.subtitle}
                     />
 
-                    <div className="grid grid-cols-1 gap-16">
-                        {/* 파인애플 식초 */}
-                        <motion.div
-                            initial="hidden"
-                            animate={productsVisible ? "visible" : "hidden"}
-                            variants={fadeIn}
-                            className="bg-gray-50 rounded-xl p-8 shadow-lg overflow-hidden"
-                        >
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                <div className="md:col-span-1">
-                                    <div className="relative h-64 w-full rounded-xl overflow-hidden shadow-md">
-                                        <Image
-                                            src="/images/products/product-1.jpg"
-                                            alt={t.vinegarInfo.productDifferences.pineapple.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">{t.vinegarInfo.productDifferences.pineapple.title}</h3>
-                                    <p className="text-lg font-medium text-gray-700 mb-4">{t.vinegarInfo.productDifferences.pineapple.ingredients}</p>
-                                </div>
+                    {/* Firebase 데이터 로딩 중 */}
+                    {vinegarLoading && (
+                        <div className="flex justify-center items-center py-12">
+                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+                        </div>
+                    )}
 
-                                <div className="md:col-span-2">
-                                    <h4 className="text-xl font-bold text-green-700 mb-4">{t.vinegarInfo.productDifferences.pineapple.healthEffects}</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Firebase 데이터로 제품별 특징 표시 */}
+                    {!vinegarLoading && vinegarInfo && vinegarInfo.length > 0 && (
+                        <div className="grid grid-cols-1 gap-16">
+                            {vinegarInfo.map((product: any, index: number) => {
+                                // 현재 언어에 맞는 데이터 가져오기 (폴백: ko -> en -> 첫 번째 있는 언어)
+                                const title = product[`title_${locale}`] || product.title_ko || product.title_en || product.title || '';
+                                const ingredients = product[`ingredients_${locale}`] || product.ingredients_ko || product.ingredients_en || product.ingredients || '';
+                                const healthEffects = product[`healthEffects_${locale}`] || product.healthEffects_ko || product.healthEffects_en || product.healthEffects || [];
+                                const feature = product[`feature_${locale}`] || product.feature_ko || product.feature_en || product.feature || '';
+                                
+                                return (
+                                    <motion.div
+                                        key={product.id}
+                                        initial="hidden"
+                                        animate={productsVisible ? "visible" : "hidden"}
+                                        variants={fadeIn}
+                                        transition={{ delay: 0.3 * index }}
+                                        className="bg-gray-50 rounded-xl p-8 shadow-lg overflow-hidden"
+                                    >
+                                        <div className="flex flex-col lg:flex-row gap-8">
+                                            <div className="lg:w-1/3 flex-shrink-0">
+                                                <div className="relative h-64 w-full rounded-xl overflow-hidden shadow-md">
+                                                    <Image
+                                                        src={product.imageUrl || "/images/products/default.jpg"}
+                                                        alt={title}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4 break-words">{title}</h3>
+                                                <div className="bg-gray-100 p-4 rounded-lg">
+                                                    <p className="text-sm font-semibold text-gray-700 mb-2">
+                                                        {locale === 'ko' ? '주요 성분' :
+                                                         locale === 'en' ? 'Main Ingredients' :
+                                                         locale === 'id' ? 'Bahan Utama' :
+                                                         locale === 'zh' ? '主要成분' :
+                                                         locale === 'ja' ? '主な成分' :
+                                                         locale === 'ar' ? 'المكونات الرئيسية' :
+                                                         'Main Ingredients'}:
+                                                    </p>
+                                                    <p className="text-gray-700 break-words">{ingredients}</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="lg:flex-1 min-w-0">
+                                                <h4 className="text-xl font-bold text-green-700 mb-4">
+                                                    {locale === 'ko' ? '건강 효과' :
+                                                     locale === 'en' ? 'Health Effects' :
+                                                     locale === 'id' ? 'Manfaat Kesehatan' :
+                                                     locale === 'zh' ? '健康效과' :
+                                                     locale === 'ja' ? '健康効果' :
+                                                     locale === 'ar' ? 'الفوائد الصحية' :
+                                                     'Health Effects'}
+                                                </h4>
+                                                {healthEffects && healthEffects.length > 0 && (
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                                        {healthEffects.map((effect: any, idx: number) => (
+                                                            <div key={idx} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                                                <h5 className="font-bold text-gray-800 mb-2 text-sm break-words">{effect.title}</h5>
+                                                                <p className="text-gray-700 text-sm leading-relaxed break-words">{effect.description}</p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                                {feature && (
+                                                    <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-5 rounded-lg border-l-4 border-yellow-500">
+                                                        <h5 className="font-bold text-gray-800 mb-2">
+                                                            {locale === 'ko' ? '특징' :
+                                                             locale === 'en' ? 'Feature' :
+                                                             locale === 'id' ? 'Fitur' :
+                                                             locale === 'zh' ? '特点' :
+                                                             locale === 'ja' ? '特徴' :
+                                                             locale === 'ar' ? 'الميزة' :
+                                                             'Feature'}
+                                                        </h5>
+                                                        <p className="text-gray-800 leading-relaxed whitespace-pre-wrap break-words">{feature}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    {/* 하드코딩된 기본 컨텐츠 (Firebase 데이터가 없을 때) */}
+                    {!vinegarLoading && (!vinegarInfo || vinegarInfo.length === 0) && (
+                        <div className="grid grid-cols-1 gap-16">
+                            {/* 파인애플 식초 */}
+                            <motion.div
+                                initial="hidden"
+                                animate={productsVisible ? "visible" : "hidden"}
+                                variants={fadeIn}
+                                className="bg-gray-50 rounded-xl p-8 shadow-lg overflow-hidden"
+                            >
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    <div className="md:col-span-1">
+                                        <div className="relative h-64 w-full rounded-xl overflow-hidden shadow-md">
+                                            <Image
+                                                src="/images/products/product-1.jpg"
+                                                alt={t.vinegarInfo.productDifferences.pineapple.title}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">{t.vinegarInfo.productDifferences.pineapple.title}</h3>
+                                        <p className="text-lg font-medium text-gray-700 mb-4">
+                                            {locale === 'ko' ? '주요 성분' :
+                                             locale === 'en' ? 'Main Ingredients' :
+                                             locale === 'id' ? 'Bahan Utama' :
+                                             locale === 'zh' ? '主要成分' :
+                                             locale === 'ja' ? '主な成分' :
+                                             locale === 'ar' ? 'المكونات الرئيسية' :
+                                             'Main Ingredients'}: {t.vinegarInfo.productDifferences.pineapple.ingredients}
+                                        </p>
+                                    </div>
+
+                                    <div className="md:col-span-2">
+                                        <h4 className="text-xl font-bold text-green-700 mb-4">
+                                            {locale === 'ko' ? '건강 효과' :
+                                             locale === 'en' ? 'Health Effects' :
+                                             locale === 'id' ? 'Manfaat Kesehatan' :
+                                             locale === 'zh' ? '健康效果' :
+                                             locale === 'ja' ? '健康効果' :
+                                             locale === 'ar' ? 'الفوائد الصحية' :
+                                             'Health Effects'}
+                                        </h4>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-white p-4 rounded-lg shadow">
                                             <h5 className="font-bold text-gray-800 mb-2">{t.vinegarInfo.productDifferences.pineapple.digestionTitle}</h5>
                                             <p className="text-gray-700">{t.vinegarInfo.productDifferences.pineapple.digestion}</p>
@@ -282,12 +395,12 @@ export default function VinegarInfoPage({ params: { locale } }: { params: { loca
                                             <h5 className="font-bold text-gray-800 mb-2">{t.vinegarInfo.productDifferences.pineapple.bloodSugarTitle}</h5>
                                             <p className="text-gray-700">{t.vinegarInfo.productDifferences.pineapple.bloodSugar}</p>
                                         </div>
-                                    </div>
-                                    <div className="mt-6 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                                        <p className="font-medium text-gray-800">{t.vinegarInfo.productDifferences.pineapple.feature}</p>
+                                        </div>
+                                        <div className="mt-6 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                            <p className="font-medium text-gray-800">{t.vinegarInfo.productDifferences.pineapple.feature}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </motion.div>
 
                         {/* 사과 식초 */}
@@ -309,11 +422,27 @@ export default function VinegarInfoPage({ params: { locale } }: { params: { loca
                                         />
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">{t.vinegarInfo.productDifferences.apple.title}</h3>
-                                    <p className="text-lg font-medium text-gray-700 mb-4">{t.vinegarInfo.productDifferences.apple.ingredients}</p>
+                                    <p className="text-lg font-medium text-gray-700 mb-4">
+                                        {locale === 'ko' ? '주요 성분' :
+                                         locale === 'en' ? 'Main Ingredients' :
+                                         locale === 'id' ? 'Bahan Utama' :
+                                         locale === 'zh' ? '주要成分' :
+                                         locale === 'ja' ? '主な成分' :
+                                         locale === 'ar' ? 'المكونات الرئيسية' :
+                                         'Main Ingredients'}: {t.vinegarInfo.productDifferences.apple.ingredients}
+                                    </p>
                                 </div>
 
                                 <div className="md:col-span-2">
-                                    <h4 className="text-xl font-bold text-green-700 mb-4">{t.vinegarInfo.productDifferences.apple.healthEffects}</h4>
+                                    <h4 className="text-xl font-bold text-green-700 mb-4">
+                                        {locale === 'ko' ? '건강 효과' :
+                                         locale === 'en' ? 'Health Effects' :
+                                         locale === 'id' ? 'Manfaat Kesehatan' :
+                                         locale === 'zh' ? '健康效果' :
+                                         locale === 'ja' ? '健康効果' :
+                                         locale === 'ar' ? 'الفوائد الصحية' :
+                                         'Health Effects'}
+                                    </h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-white p-4 rounded-lg shadow">
                                             <h5 className="font-bold text-gray-800 mb-2">{t.vinegarInfo.productDifferences.apple.bloodSugarTitle}</h5>
@@ -358,11 +487,27 @@ export default function VinegarInfoPage({ params: { locale } }: { params: { loca
                                         />
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">{t.vinegarInfo.productDifferences.dragonFruit.title}</h3>
-                                    <p className="text-lg font-medium text-gray-700 mb-4">{t.vinegarInfo.productDifferences.dragonFruit.ingredients}</p>
+                                    <p className="text-lg font-medium text-gray-700 mb-4">
+                                        {locale === 'ko' ? '주요 성분' :
+                                         locale === 'en' ? 'Main Ingredients' :
+                                         locale === 'id' ? 'Bahan Utama' :
+                                         locale === 'zh' ? '主要成分' :
+                                         locale === 'ja' ? '主な成分' :
+                                         locale === 'ar' ? 'المكونات الرئيسية' :
+                                         'Main Ingredients'}: {t.vinegarInfo.productDifferences.dragonFruit.ingredients}
+                                    </p>
                                 </div>
 
                                 <div className="md:col-span-2">
-                                    <h4 className="text-xl font-bold text-green-700 mb-4">{t.vinegarInfo.productDifferences.dragonFruit.healthEffects}</h4>
+                                    <h4 className="text-xl font-bold text-green-700 mb-4">
+                                        {locale === 'ko' ? '건강 효과' :
+                                         locale === 'en' ? 'Health Effects' :
+                                         locale === 'id' ? 'Manfaat Kesehatan' :
+                                         locale === 'zh' ? '健康효果' :
+                                         locale === 'ja' ? '健康効果' :
+                                         locale === 'ar' ? 'الفوائد الصحية' :
+                                         'Health Effects'}
+                                    </h4>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="bg-white p-4 rounded-lg shadow">
                                             <h5 className="font-bold text-gray-800 mb-2">{t.vinegarInfo.productDifferences.dragonFruit.antioxidantTitle}</h5>
@@ -388,6 +533,7 @@ export default function VinegarInfoPage({ params: { locale } }: { params: { loca
                             </div>
                         </motion.div>
                     </div>
+                    )}
                 </div>
             </section>
 

@@ -26,10 +26,16 @@ export default function ProductDetail({
 }: ProductDetailProps) {
     const t = getTranslation(locale);
     const [activeImage, setActiveImage] = useState(0);
+    const [imageLoadError, setImageLoadError] = useState<boolean[]>([]);
+
+    const handleImageError = (index: number) => {
+        const newErrors = [...imageLoadError];
+        newErrors[index] = true;
+        setImageLoadError(newErrors);
+    };
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* 제품 이미지 */}
             <div>
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -47,17 +53,22 @@ export default function ProductDetail({
                             className="h-full w-full"
                         >
                             <Image
-                                src={product.images[activeImage]}
+                                src={product.images[activeImage] || '/images/placeholder.jpg'}
                                 alt={product.name}
                                 fill
                                 className="object-cover"
                                 priority
+                                onError={() => handleImageError(activeImage)}
                             />
+                            {imageLoadError[activeImage] && (
+                                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                                    <p className="text-gray-500">이미지를 불러올 수 없습니다</p>
+                                </div>
+                            )}
                         </motion.div>
                     </AnimatePresence>
                 </motion.div>
 
-                {/* 썸네일 이미지 */}
                 <div className="flex gap-4 justify-center">
                     {product.images.map((image: string, index: number) => (
                         <motion.button
@@ -71,17 +82,22 @@ export default function ProductDetail({
                                 }`}
                         >
                             <Image
-                                src={image}
+                                src={image || '/images/placeholder.jpg'}
                                 alt={`${product.name} thumbnail ${index + 1}`}
                                 fill
                                 className="object-cover"
+                                onError={() => handleImageError(index)}
                             />
+                            {imageLoadError[index] && (
+                                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                                    <p className="text-gray-500 text-xs">이미지 오류</p>
+                                </div>
+                            )}
                         </motion.button>
                     ))}
                 </div>
             </div>
 
-            {/* 제품 정보 */}
             <div>
                 <div className="bg-gray-50 p-8 rounded-xl shadow-sm">
                     <motion.div
